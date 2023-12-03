@@ -21,12 +21,12 @@
     <form class="form">
       <div class="input-box">
         <label>Name</label>
-        <input type="text" id="fullname" placeholder="Enter your full name"  />
+        <input type="text" id="fullname" placeholder="Enter your full name" />
       </div>
 
       <div class="input-box">
         <label>Address</label>
-        <input type="text" id="completeAdd" placeholder="Enter your full address"  />
+        <input type="text" id="completeAdd" placeholder="Enter your full address" />
       </div>
 
       <div class="column">
@@ -53,11 +53,11 @@
 
         <div class="input-box">
           <label>House number</label>
-          <input type="number" placeholder="Enter house number" id="houseNum"  />
+          <input type="number" placeholder="Enter house number" id="houseNum" />
         </div>
         <div class="input-box">
           <label>Birth Date</label>
-          <input type="date" placeholder="Enter birth date" id="birthD"  />
+          <input type="date" placeholder="Enter birth date" id="birthD" />
         </div>
       </div>
       </div>
@@ -291,240 +291,242 @@
             </div>
             <br>
           </div>
-          <div>
-            <div class="column">
-              <button type="button" onclick="clr()">Clear Form</button>
-              <button type="submit" onclick="addMem()">Next</button>
-            </div>
+        </div>
+        <div>
+          <div class="column">
+            <button type="button" onclick="clr()">Clear Form</button>
+            <button type="submit" onclick="addMem()">Next</button>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </form>
   </section>
 </body>
 <main id="main">
 
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
 
-  body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: linear-gradient(to bottom, #b3b6b6, #A7D397);
-  }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: linear-gradient(to bottom, #b3b6b6, #A7D397);
+    }
 
-  .container {
-    position: relative;
-    max-width: 1000px;
-    width: 100%;
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
+    .container {
+      position: relative;
+      max-width: 1000px;
+      width: 100%;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
 
-  .container header {
-    font-size: 2rem;
-    color: #333;
-    font-weight: 500;
-    text-align: center;
-  }
+    .container header {
+      font-size: 2rem;
+      color: #333;
+      font-weight: 500;
+      text-align: center;
+    }
 
-  .container .form {
-    margin-top: 30px;
-  }
+    .container .form {
+      margin-top: 30px;
+    }
 
-  .form .input-box {
-    width: 100%;
-    margin-top: 20px;
-  }
+    .form .input-box {
+      width: 100%;
+      margin-top: 20px;
+    }
 
-  .input-box label {
-    color: #120d0d;
-  }
+    .input-box label {
+      color: #120d0d;
+    }
 
-  .form :where(.input-box input, .select-box) {
-    position: relative;
-    height: 50px;
-    width: 100%;
-    outline: none;
-    font-size: 1.1rem;
-    color: #120d0d;
-    margin-top: 8px;
-    border: 2px solid #c3bfbf;
-    border-radius: 10px;
-    padding: 0 15px;
-  }
+    .form :where(.input-box input, .select-box) {
+      position: relative;
+      height: 50px;
+      width: 100%;
+      outline: none;
+      font-size: 1.1rem;
+      color: #120d0d;
+      margin-top: 8px;
+      border: 2px solid #c3bfbf;
+      border-radius: 10px;
+      padding: 0 15px;
+    }
 
-  .input-box input:focus {
-    box-shadow: 0 1px 0 #120d0d;
-  }
+    .input-box input:focus {
+      box-shadow: 0 1px 0 #120d0d;
+    }
 
-  .form .column {
-    display: flex;
-    column-gap: 15px;
-  }
-
-  .form .gender-box {
-    margin-top: 20px;
-  }
-
-  .form ::placeholder {
-    font-size: 1.1rem;
-    color: #525252;
-  }
-
-  .form label {
-    font-size: 1.2rem;
-  }
-
-  .gender-box h3 {
-    color: #120d0d;
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-bottom: 8px;
-  }
-
-  .form :where(.gender-option, .gender) {
-    display: flex;
-    align-items: center;
-    column-gap: 50px;
-    flex-wrap: wrap;
-  }
-
-  .form .gender {
-    column-gap: 5px;
-  }
-
-  .gender input {
-    accent-color: #A7D397;
-  }
-
-  .form :where(.gender input, .gender label) {
-    cursor: pointer;
-  }
-
-  .gender label {
-    color: #707070;
-  }
-
-  .address :where(input, .select-box) {
-    margin-top: 15px;
-  }
-
-  .select-box select {
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    color: #120d0d;
-    font-size: 1.1rem;
-  }
-
-  .form button {
-    height: 55px;
-    width: 100%;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-top: 30px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: #555843;
-  }
-
-  .form button:hover {
-    background: #ff0c0c;
-  }
-
-  /*Responsive*/
-  @media screen and (max-width: 500px) {
     .form .column {
-      flex-wrap: wrap;
+      display: flex;
+      column-gap: 15px;
+    }
+
+    .form .gender-box {
+      margin-top: 20px;
+    }
+
+    .form ::placeholder {
+      font-size: 1.1rem;
+      color: #525252;
+    }
+
+    .form label {
+      font-size: 1.2rem;
+    }
+
+    .gender-box h3 {
+      color: #120d0d;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 8px;
     }
 
     .form :where(.gender-option, .gender) {
-      row-gap: 15px;
+      display: flex;
+      align-items: center;
+      column-gap: 50px;
+      flex-wrap: wrap;
     }
-  }
-</style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script type="text/javascript">
-  // Import the Supabase client
 
-  // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
-  const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+    .form .gender {
+      column-gap: 5px;
+    }
 
-  // Create a Supabase client
-  const database = supabase.createClient(supabaseUrl, supabaseKey);
+    .gender input {
+      accent-color: #A7D397;
+    }
 
-  // Function to check the connection status and show an alert
-  async function checkConnection() {
-    try {
-      // Try to make a request to Supabase to check the connection
-      const { data, error } = await database.from('miyembro').select();
+    .form :where(.gender input, .gender label) {
+      cursor: pointer;
+    }
 
-      // If there's an error, log it
-      if (error) {
-        console.error('Error connection! Please try again.', error.message);
-      } else {
-        // If successful, show an alert
-        alert('Connection secured!');
+    .gender label {
+      color: #707070;
+    }
+
+    .address :where(input, .select-box) {
+      margin-top: 15px;
+    }
+
+    .select-box select {
+      height: 100%;
+      width: 100%;
+      outline: none;
+      border: none;
+      color: #120d0d;
+      font-size: 1.1rem;
+    }
+
+    .form button {
+      height: 55px;
+      width: 100%;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-top: 30px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #555843;
+    }
+
+    .form button:hover {
+      background: #ff0c0c;
+    }
+
+    /*Responsive*/
+    @media screen and (max-width: 500px) {
+      .form .column {
+        flex-wrap: wrap;
       }
-    } catch (error) {
-      console.error('Error:', error.message);
+
+      .form :where(.gender-option, .gender) {
+        row-gap: 15px;
+      }
     }
-  }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="text/javascript">
+    // Import the Supabase client
 
-  // Call the checkConnection function
-  checkConnection();
+    // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
+    const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
 
-  async function addMem() {
-    let repName = document.getElementById("fullname").value;
-    let repAdd = document.getElementById("completeAdd").value;
-    let repHouse = document.getElementById("houseNum").value;
-    let repBD = document.getElementById("birthD").value;
+    // Create a Supabase client
+    const database = supabase.createClient(supabaseUrl, supabaseKey);
 
-    var ress = document.getElementById("relations");
-    var ressSelectedIndex = ress.selectedIndex;
-    var ressOptions = ress.options;
-    var relate = ressOptions[ressSelectedIndex].value;
+    // Function to check the connection status and show an alert
+    async function checkConnection() {
+      try {
+        // Try to make a request to Supabase to check the connection
+        const { data, error } = await database.from('miyembro').select();
 
-    var gen = document.getElementsByName('gender');
-    for (i = 0; i < gen.length; i++) {
-      if (gen[i].checked) {
+        // If there's an error, log it
+        if (error) {
+          console.error('Error connection! Please try again.', error.message);
+        } else {
+          // If successful, show an alert
+          alert('Connection secured!');
+        }
+      } catch (error) {
+        console.error('Error:', error.message);
       }
     }
 
-    const { data, error } = await database
-      .from('miyembro')
-      .insert([
-        {
-          pinuno: repName,
-          nakatira: repAdd,
-          sinoka: relate,
-          bahayNumero: repHouse,
-          isinilang: repBD,
-          kasarian: gen
-        },
-      ])
+    // Call the checkConnection function
+    checkConnection();
+
+    async function addMem() {
+      let repName = document.getElementById("fullname").value;
+      let repAdd = document.getElementById("completeAdd").value;
+      let repHouse = document.getElementById("houseNum").value;
+      let repBD = document.getElementById("birthD").value;
+
+      var ress = document.getElementById("relations");
+      var ressSelectedIndex = ress.selectedIndex;
+      var ressOptions = ress.options;
+      var relate = ressOptions[ressSelectedIndex].value;
+
+      var gen = document.getElementsByName('gender');
+      for (i = 0; i < gen.length; i++) {
+        if (gen[i].checked) {
+        }
+      }
+
+      const { data, error } = await database
+        .from('miyembro')
+        .insert([
+          {
+            pinuno: repName,
+            nakatira: repAdd,
+            sinoka: relate,
+            bahayNumero: repHouse,
+            isinilang: repBD,
+            kasarian: gen
+          },
+        ])
       alert("Updated");
       window.location.href = 'registration-form2.html'
-  }
+    }
 
-</script>
+  </script>
 
 </html>
