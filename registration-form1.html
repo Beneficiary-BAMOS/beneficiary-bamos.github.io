@@ -493,15 +493,15 @@
   checkConnection();
 
   async function addMem() {
-    let repName = document.getElementById("fullname").innerText;
-    let repAdd = document.getElementById("completeAdd").text;
-    let repHouse = document.getElementById("houseNum").innerText;
-    let repBD = document.getElementById("birthD").outerText;
+    let repName = document.getElementById("fullname").value;
+    let repAdd = document.getElementById("completeAdd").value;
+    let repHouse = document.getElementById("houseNum").value;
+    let repBD = document.getElementById("birthD").value;
 
     var ress = document.getElementById("relations");
     var ressSelectedIndex = ress.selectedIndex;
     var ressOptions = ress.options;
-    var relate = ressOptions[ressSelectedIndex].text;
+    var relate = ressOptions[ressSelectedIndex].value;
 
     var gen = document.getElementsByName('gender');
     for (i = 0; i < gen.length; i++) {
