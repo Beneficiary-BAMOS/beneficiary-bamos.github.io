@@ -169,7 +169,6 @@
 <script type="text/javascript">
 
   // Import the Supabase client
-
   // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
   const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
@@ -197,21 +196,75 @@
   checkConnection();
   
   document.getElementById("userPhone").innerText = "";
-  document.getElementById("password").innerText = "";
+  document.getElementById("typePasswordX").innerText = "";
 
   async function redirectToPage() {
+ 
     // Get the input value
-    const usernameInput = document.getElementById('userPhone').value;
-    const username = usernameInput.toLowerCase(); // Convert to lowercase for case-insensitive comparison
-    const { data, error } = await database.from('testing').select().eq('phoneNum', usernameInput);
+    const userPhoneNum = document.getElementById('userPhone').value;
+    const userPassword = document.getElementById('typePasswordX').value;
 
-    // Check the username and redirect accordingly
-    if (username === 'admin') {
-      window.location.href = 'BAMOS-DASHBOARD/template/bamos-dashb-welcome-page.html';
+    if(userPhoneNum == 'admin') {
+      const { data, error } = await database.from('testing').select().eq('password', userPassword);
+      
+
+      if(data.length > 0) {
+          const role = data[0].role;
+          if(role == 1) {
+            var userData = JSON.stringify(data[0]);
+            localStorage.setItem("userDetails", userData);
+
+            // InsertLog 
+            if(userData) {   
+              const { data, error } = await database
+              .from('audit')
+              .insert([
+                {
+                  user_id : JSON.parse(userData).id,
+                  description : JSON.parse(userData).username + " is Logged-in!",
+                  page : 'login',
+                },
+              ]);
+            }
+
+            window.location.href = 'BAMOS-DASHBOARD/template/bamos-dashb-welcome-page.html';
+          } else {
+            alert('Invalid Role.');
+          }
+
+      } else {
+        alert('Invalid user login.');
+      }
     } else {
-      window.location.href = 'registration-form1.html';
+      const { data, error } = await database.from('testing').select().eq('phoneNum', userPhoneNum).eq('password', userPassword);
+
+      if(data.length > 0) {
+        const role = data[0].role;
+        if(role == 2) {
+          var userData = JSON.stringify(data[0]);
+          localStorage.setItem("userDetails", userData);
+
+          // InsertLog 
+          if(userData) {   
+            const { data, error } = await database
+            .from('audit')
+            .insert([
+              {
+                user_id : JSON.parse(userData).id,
+                description : JSON.parse(userData).username + " is Logged-in!",
+                page : 'login'
+              },
+            ]);
+          }
+          window.location.href = 'registration-form1.html';
+        } else {
+          alert('Invalid Role.');
+        }
+      } else {
+        alert('Invalid user login.');
+      }
     }
-    
+
   }
 
   async function getUserByUsername(username, passwordInput) {
