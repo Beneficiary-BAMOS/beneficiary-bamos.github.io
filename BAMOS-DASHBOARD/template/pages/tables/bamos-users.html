@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>BAMOS TABLES </title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../vendors/feather/feather.css">
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../../vendors/typicons/typicons.css">
+  <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <style>
+    .modal .modal-dialog {
+      max-width: 900px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+        <div class="me-3">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+        <div>
+          <a class="navbar-brand brand-logo" href="bamos-dashb-welcome-page.html">
+            <img src="images/logo-2.png" alt="logo" />
+          </a>
+          <a class="navbar-brand brand-logo-mini" href="bamos-dashb-welcome-page.html">
+            <img src="images/logo-2.png" alt="logo" />
+          </a>
+        </div>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-top"> 
+        <ul class="navbar-nav">
+          <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+            <h1 class="welcome-text">Good Day, <span class="fw-bold">ADMIN</span></h1>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item d-none d-lg-block">
+            <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
+              <span class="input-group-addon input-group-prepend border-right">
+                <span class="icon-calendar input-group-text calendar-icon"></span>
+              </span>
+              <input type="text" class="form-control">
+            </div>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="icon-bell"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown" id="notification-list">
+              
+              
+            </div>
+          </li>
+
+          <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+            <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              Admin </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+              <div class="dropdown-header text-center">
+                <p class="mb-1 mt-3 font-weight-semibold" id="userAdmin"></p>
+                <p class="fw-light text-muted mb-0" id="userAdminEmail"></p>
+              </div>
+
+              <a class="dropdown-item"  id="sign-out"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="todo-tab" data-bs-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-bs-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="setting-content">
+          <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+            <div class="add-items d-flex px-3 mb-0">
+              <form class="form w-100">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+                </div>
+              </form>
+            </div>
+            <div class="list-wrapper px-3">
+              <ul class="d-flex flex-column-reverse todo-list">
+                <li>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox">
+                      Team review meeting at 3.00 PM
+                    </label>
+                  </div>
+                  <i class="remove ti-close"></i>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox">
+                      Prepare for presentation
+                    </label>
+                  </div>
+                  <i class="remove ti-close"></i>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox">
+                      Resolve all the low priority tickets due today
+                    </label>
+                  </div>
+                  <i class="remove ti-close"></i>
+                </li>
+                <li class="completed">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox" checked>
+                      Schedule meeting for next week
+                    </label>
+                  </div>
+                  <i class="remove ti-close"></i>
+                </li>
+                <li class="completed">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox" checked>
+                      Project review
+                    </label>
+                  </div>
+                  <i class="remove ti-close"></i>
+                </li>
+              </ul>
+            </div>
+            <h4 class="px-3 text-muted mt-5 fw-light mb-0">Events</h4>
+            <div class="events pt-4 px-3">
+              <div class="wrapper d-flex mb-2">
+                <i class="ti-control-record text-primary me-2"></i>
+                <span>Feb 11 2018</span>
+              </div>
+              <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
+              <p class="text-gray mb-0">The total number of sessions</p>
+            </div>
+            <div class="events pt-4 px-3">
+              <div class="wrapper d-flex mb-2">
+                <i class="ti-control-record text-primary me-2"></i>
+                <span>Feb 7 2018</span>
+              </div>
+              <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
+              <p class="text-gray mb-0 ">Call Sarah Graves</p>
+            </div>
+          </div>
+          <!-- To do section tab ends -->
+          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+            <div class="d-flex align-items-center justify-content-between border-bottom">
+              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
+              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 fw-normal">See All</small>
+            </div>
+            <ul class="chat-list">
+              <li class="list active">
+                <div class="profile"><img src="../../images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Thomas Douglas</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">19 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="../../images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
+                <div class="info">
+                  <div class="wrapper d-flex">
+                    <p>Catherine</p>
+                  </div>
+                  <p>Away</p>
+                </div>
+                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
+                <small class="text-muted my-auto">23 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="../../images/faces/face3.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Daniel Russell</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">14 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="../../images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
+                <div class="info">
+                  <p>James Richardson</p>
+                  <p>Away</p>
+                </div>
+                <small class="text-muted my-auto">2 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="../../images/faces/face5.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Madeline Kennedy</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">5 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="../../images/faces/face6.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Sarah Graves</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">47 min</small>
+              </li>
+            </ul>
+          </div>
+          <!-- chat tab ends -->
+        </div>
+      </div>
+      <!-- partial -->
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../../bamos-dashb-welcome-page.html">
+              <i class="mdi mdi-grid-large menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Forms and Datas</li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+              <i class="menu-icon mdi mdi-card-text-outline"></i>
+              <span class="menu-title">Forms</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="../../pages/forms/bamos-form-checking.html">For checking</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+              <i class="menu-icon mdi mdi-chart-line"></i>
+              <span class="menu-title">Charts</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="charts">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/charts/bamos-charts.html">See all charts</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+              <i class="menu-icon mdi mdi-table"></i>
+              <span class="menu-title">Users</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="tables">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/tables/bamos-users.html">See all users</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Users Table</h4>
+                  
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Full Name
+                          </th>
+                          <th>
+                            Phone Number
+                          </th>
+                          <th>
+                            Status
+                          </th>
+                          <th>
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody id="user-list">
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">BAMOS © 2023. All rights reserved.</span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <script src="../../js/settings.js"></script>
+  <script src="../../js/todolist.js"></script>
+  <script src="../../js/dashboard.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <!-- End custom js for this page-->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+  <script>
+    const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+    const database = supabase.createClient(supabaseUrl, supabaseKey);
+    async function getData () {
+      var { data, error } = await database.from('testing').select(` 
+    *,
+      kalusuganBuntis ( * ),
+      kalusuganPWD ( * ),
+      miyembro ( * ),
+      nutrisyon ( * ),
+      pangkabuhayan ( * ),
+      panlipunan ( * )
+    `).eq('role', 2);
+
+      var html = '';
+      if(data.length > 0) {
+        for(var x = 0; x < data.length; x++) {
+          var status = data[x].is_active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Pending</span>';
+          html += `
+            <tr class="user-list-tr">
+                <td>
+                  <a href="#" class="bootstrap-modal" data-toggle="modal" data-target="#userDetails${x}">
+                    ${data[x].firstname} ${data[x].middlename} ${data[x].lastname} 
+                  </a>
+                  <div class="modal fade" id="userDetails${x}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">User Details</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body" id="account-registration-list">`;
+
+                          var user = data[x].firstname + ' ' + data[x].middlename + ' ' + data[x].lastname;
+        var address = data[x].sitio  + ' ' + data[x].purok;
+        
+        html += `
+          <div>
+            <div>
+          
+             
+
+  `;
+              html += `<h3>Registration 1</h3>`;
+
+              html += ` <p><strong>Name:</strong> ${ data[x].miyembro[0]?.pinuno ? data[x].miyembro[0].pinuno  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Address:</strong> ${ data[x].miyembro[0]?.nakatira ? data[x].miyembro[0].nakatira : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Family Relationship:</strong> ${ data[x].miyembro[0]?.sinoka ? data[x].miyembro[0].sinoka : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>House Number:</strong> ${ data[x].miyembro[0]?.bahayNumero ? data[x].miyembro[0].bahayNumero : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Birth Date:</strong> ${ data[x].miyembro[0]?.isinilang ? data[x].miyembro[0].isinilang : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Gender:</strong> ${ data[x].miyembro[0]?.kasarian ? data[x].miyembro[0].kasarian : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Employed:</strong> ${ data[x].miyembro[0]?.Employed ? data[x].miyembro[0].Employed : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Sitio:</strong> ${ data[x].miyembro[0]?.Sitio ? data[x].miyembro[0].Sitio : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Purok:</strong> ${ data[x].miyembro[0]?.Purok ? data[x].miyembro[0].Purok : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                      `;
+
+              html += `<br><h4>Family Member</h4>`;
+              if(data[x].miyembro[0]?.Family_members != null) {
+                if(data[x].miyembro[0]?.Family_members.length > 0) {
+                  for(var y = 0; y < data[x].miyembro[0]?.Family_members.length; y++) {
+                    html += `
+                    <br>
+                    <h5>Member ${y + 1}</h5>
+                    <p><strong>Member:</strong> ${ data[x].miyembro[0]?.Family_members[y].member ? data[x].miyembro[0]?.Family_members[y].member  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Birthday:</strong> ${ data[x].miyembro[0]?.Family_members[y].bday ? data[x].miyembro[0]?.Family_members[y].bday  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Age:</strong> ${ data[x].miyembro[0]?.Family_members[y].age ? data[x].miyembro[0]?.Family_members[y].age  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    
+                    <p><strong>Civil Status:</strong> ${ data[x].miyembro[0]?.Family_members[y].civilStat ? data[x].miyembro[0]?.Family_members[y].civilStat  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Religion:</strong> ${ data[x].miyembro[0]?.Family_members[y].religion ? data[x].miyembro[0]?.Family_members[y].religion  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Educational Attainment:</strong> ${ data[x].miyembro[0]?.Family_members[y].edAttain ? data[x].miyembro[0]?.Family_members[y].edAttain  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Source of Income:</strong> ${ data[x].miyembro[0]?.Family_members[y].sourceIncome ? data[x].miyembro[0]?.Family_members[y].sourceIncome  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Gender:</strong> ${ data[x].miyembro[0]?.Family_members[y].genderPick ? data[x].miyembro[0]?.Family_members[y].genderPick  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Years of staying in the area:</strong> ${ data[x].miyembro[0]?.Family_members[y].stay ? data[x].miyembro[0]?.Family_members[y].stay  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Philhealth:</strong> ${ data[x].miyembro[0]?.Family_members[y].philId ? data[x].miyembro[0]?.Family_members[y].philId  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    
+                    `;
+                    // <p><strong>Member Relation:</strong> ${ data[x].miyembro[0]?.Family_members[y].memberRelation > 0 ? data[x].miyembro[0]?.Family_members[y].memberRelation  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    // <p><strong>Monthly Income:</strong> ${ data[x].miyembro[0]?.Family_members[y].sourceIncome > 0 ? data[x].miyembro[0]?.Family_members[y].sourceIncome  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    // <p><strong>Employed:</strong> ${ data[x].miyembro[0]?.Family_members[y].member > 0 ? data[x].miyembro[0]?.Family_members[y].member  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                  }
+                } else {
+                  html += `<p><a href="../../../../form-lp.html?user_id=${data[x].id}">null</a></p>`;
+              }
+                } else {
+                html += `<p><a href="../../../../form-lp.html?user_id=${data[x].id}">null</a></p>`;
+              }
+
+              html += `<br><h3>Registration 2</h3>`;
+              html += ` <p><strong>Lupang Kinatatayuan:</strong> ${ data[x].pangkabuhayan[0]?.LupangKinatatayuan ? data[x].pangkabuhayan[0].LupangKinatatayuan  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Bahay na Tinitirahan:</strong> ${ data[x].pangkabuhayan[0]?.BahaynaTinitirhan ? data[x].pangkabuhayan[0].BahaynaTinitirhan : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Lupang Sakahan/Pinagyayaman:</strong> ${ data[x].pangkabuhayan[0]?.LupangSakahanPinagyayaman ? data[x].pangkabuhayan[0].LupangSakahanPinagyayaman : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Paraan ng Pagtatapon ng Basura:</strong> ${ data[x].pangkabuhayan[0]?.ParaanPagtataponngBasura ? data[x].pangkabuhayan[0].ParaanPagtataponngBasura : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Gamit sa Enerhiya sa Pagluluto:</strong> ${ data[x].pangkabuhayan[0]?.GamitnaEnerhiyasaPagluluto ? data[x].pangkabuhayan[0].GamitnaEnerhiyasaPagluluto : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Pinagkukunan ng Tubig:</strong> ${ data[x].pangkabuhayan[0]?.PinagkukunanngTubig ? data[x].pangkabuhayan[0].PinagkukunanngTubig : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Uri ng Palikuran:</strong> ${ data[x].pangkabuhayan[0]?.UringPalikuran ? data[x].pangkabuhayan[0].UringPalikuran : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Pinag mumulan ng Elektrisidad:</strong> ${ data[x].pangkabuhayan[0]?.PinagmumulanngElektrisidad ? data[x].pangkabuhayan[0].PinagmumulanngElektrisidad : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Sasakyan:</strong> ${ data[x].pangkabuhayan[0]?.KasangkapangpangAgrukultura ? data[x].pangkabuhayan[0].KasangkapangpangAgrukultura : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Kasangkapang pang Agrikultura:</strong> ${ data[x].pangkabuhayan[0]?.Purok ? data[x].pangkabuhayan[0].Purok : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Pang Komersiyo:</strong> ${ data[x].pangkabuhayan[0]?.PangKomersiyo ? data[x].pangkabuhayan[0].PangKomersiyo : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Mga Kasangkapan sa Bahay:</strong> ${ data[x].pangkabuhayan[0]?.MgaKasangkapansaBahay ? data[x].pangkabuhayan[0].MgaKasangkapansaBahay : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                      `;
+
+              html += `<br><h3>Registration 3 (Bata)</h3>`;
+              html += `<p>Member</p>`;
+            
+              html += ` <p><strong>Pangalan:</strong> ${ data[x].nutrisyon[0]?.member_1 ? JSON.parse(data[x].nutrisyon[0].member_1).name : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Gulang sa Buwan:</strong> ${ data[x].nutrisyon[0]?.member_1 ? JSON.parse(data[x].nutrisyon[0].member_1).age : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Timbang:</strong> ${ data[x].nutrisyon[0]?.member_1 ? JSON.parse(data[x].nutrisyon[0].member_1).weight : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Kaarawan:</strong> ${ data[x].nutrisyon[0]?.member_1 ? JSON.parse(data[x].nutrisyon[0].member_1).bday : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Imunisasyon:</strong> ${ data[x].nutrisyon[0]?.member_1 ? JSON.parse(data[x].nutrisyon[0].member_1).imunization : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Nasagawa:</strong> ${ data[x].nutrisyon[0]?.member_1 ? JSON.parse(data[x].nutrisyon[0].member_1).nagsagawa : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <hr>
+                      `;
+
+              html += `<br><h4>Family Member - Bata</h4>`;
+              if(data[x].nutrisyon[0]?.Family_members != null) {
+                if(data[x].nutrisyon[0]?.Family_members.length > 0) {
+                  for(var y = 0; y < data[x].nutrisyon[0]?.Family_members.length; y++) {
+                    html += `
+                    <br>
+                    <h5>Member ${y + 1}</h5>
+                    <p><strong>Member:</strong> ${ data[x].nutrisyon[0]?.Family_members[y].member ? data[x].nutrisyon[0]?.Family_members[y].member  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Timbang:</strong> ${ data[x].nutrisyon[0]?.Family_members[y].timbang ? data[x].nutrisyon[0]?.Family_members[y].timbang  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Nasagawa:</strong> ${ data[x].nutrisyon[0]?.Family_members[y].nasagawa ? data[x].nutrisyon[0]?.Family_members[y].nasagawa  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Imunisasyon:</strong> ${ data[x].nutrisyon[0]?.Family_members[y].imunisasyon ? data[x].nutrisyon[0]?.Family_members[y].imunisasyon  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Kapanganakan:</strong> ${ data[x].nutrisyon[0]?.Family_members[y].kapanganakan ? data[x].nutrisyon[0]?.Family_members[y].kapanganakan  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    `;
+                    // <p><strong>Member Relation:</strong> ${ data[x].nutrisyon[0]?.Family_members[y].memberRelation > 0 ? data[x].nutrisyon[0]?.Family_members[y].memberRelation  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    // <p><strong>Monthly Income:</strong> ${ data[x].nutrisyon[0]?.Family_members[y].sourceIncome > 0 ? data[x].nutrisyon[0]?.Family_members[y].sourceIncome  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    // <p><strong>Employed:</strong> ${ data[x].nutrisyon[0]?.Family_members[y].member > 0 ? data[x].nutrisyon[0]?.Family_members[y].member  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                  }
+                } else {
+                  html += `<p><a href="../../../../form-lp.html?user_id=${data[x].id}">null</a></p>`;
+                }  
+              } else {
+                html += `<p><a href="../../../../form-lp.html?user_id=${data[x].id}">null</a></p>`;
+              }
+        
+              html += `<br><h3>Registration 4 (PWD)</h3>`;
+              html += `<p>Member</p>`;
+
+              html += `<br><h4>Family Member - PWD</h4>`;
+    
+              if(data[x].kalusuganPWD[0]?.Family_members != null) {
+                if(data[x].kalusuganPWD[0]?.Family_members.length > 0) {
+                  for(var y = 0; y < data[x].kalusuganPWD[0]?.Family_members.length; y++) {
+                    html += `
+                    <br>
+                    <h5>Member ${y + 1}</h5>
+                    <p><strong>Member:</strong> ${ data[x].kalusuganPWD[0]?.Family_members[y].member ? data[x].kalusuganPWD[0]?.Family_members[y].member  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Timbang:</strong> ${ data[x].kalusuganPWD[0]?.Family_members[y].timbang ? data[x].kalusuganPWD[0]?.Family_members[y].timbang  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Nasagawa:</strong> ${ data[x].kalusuganPWD[0]?.Family_members[y].nasagawa ? data[x].kalusuganPWD[0]?.Family_members[y].nasagawa  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Imunisasyon:</strong> ${ data[x].kalusuganPWD[0]?.Family_members[y].imunisasyon ? data[x].kalusuganPWD[0]?.Family_members[y].imunisasyon  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    <p><strong>Kapanganakan:</strong> ${ data[x].kalusuganPWD[0]?.Family_members[y].kapanganakan ? data[x].kalusuganPWD[0]?.Family_members[y].kapanganakan  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    `;
+                    // <p><strong>Member Relation:</strong> ${ data[x].kalusuganPWD[0]?.Family_members[y].memberRelation > 0 ? data[x].kalusuganPWD[0]?.Family_members[y].memberRelation  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    // <p><strong>Monthly Income:</strong> ${ data[x].kalusuganPWD[0]?.Family_members[y].sourceIncome > 0 ? data[x].kalusuganPWD[0]?.Family_members[y].sourceIncome  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                    // <p><strong>Employed:</strong> ${ data[x].kalusuganPWD[0]?.Family_members[y].member > 0 ? data[x].kalusuganPWD[0]?.Family_members[y].member  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                  }
+                } else {
+                  html += `<p><a href="../../../../form-lp.html?user_id=${data[x].id}">null</a></p>`;
+                }  
+              } else {
+                html += `<p><a href="../../../../form-lp.html?user_id=${data[x].id}">null</a></p>`;
+              }
+
+              html += `<br><h3>Registration 5</h3>`;
+          
+              html += ` <p><strong>Kabuuang bilang ng Mag-asawang Nagsasama:</strong> ${ data[x].kalusuganBuntis.length > 0 ? data[x].kalusuganBuntis[0].MagAsawangNagsasama : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Bilang ng Ipinagbuntis:</strong> ${ data[x].kalusuganBuntis.length > 0 ? data[x].kalusuganBuntis[0].BilangngIpinagbuntis : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>May balak pa bang mag-anak:</strong> ${ data[x].kalusuganBuntis.length > 0 ? data[x].kalusuganBuntis[0].MayBalakpaMaganak : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Kanino nagpapagamot?:</strong> ${ data[x].kalusuganBuntis.length > 0 ? data[x].kalusuganBuntis[0].Nagpapagamot : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Kalagayan ng pagiging Ina:</strong> ${ data[x].kalusuganBuntis.length > 0 ? data[x].kalusuganBuntis[0].Kalagayan : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>FPmethod:</strong> ${ data[x].kalusuganBuntis.length > 0 ? data[x].kalusuganBuntis[0].FPmethod : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <hr>
+                      `;
+                    
+              html += `<br><h3>Registration 6</h3>`;
+              var panlipunan = null;
+              var SamahangKinasaniban = null;
+              var Pambarangay = null;
+              var Pambayan = null;
+              if(data[x].panlipunan.length > 0) {
+                
+                panlipunan = data[x].panlipunan[0];
+                if(JSON.parse(data[x].panlipunan[0].SamahangKinasaniban).length > 0) {
+                  for(var y = 0; y < JSON.parse(data[x].panlipunan[0].SamahangKinasaniban).length; y++) {
+                    if(JSON.parse(data[x].panlipunan[0].SamahangKinasaniban)[y]) {
+                      SamahangKinasaniban += data[x].panlipunan[0].SamahangKinasaniban[x] + ', ';
+                    }
+                  }
+                }
+                if(JSON.parse(data[x].panlipunan[0].Pambarangay).length > 0) {
+                  for(var y = 0; y < JSON.parse(data[x].panlipunan[0].Pambarangay).length; y++) {
+                    if(JSON.parse(data[x].panlipunan[0].Pambarangay)[y]) {
+                      Pambarangay += data[x].panlipunan[0].Pambarangay[y] + ', ';
+                    }
+                  }
+                }
+                if(JSON.parse(data[x].panlipunan[0].Pambayan).length > 0) {
+                  for(var y = 0; y < JSON.parse(data[x].panlipunan[0].Pambayan).length; y++) {
+                    console.log('JSON.parse(data[x].panlipunan[0].Pambayan)[y]', JSON.parse(data[x].panlipunan[0].Pambayan)[y]);
+                    if(JSON.parse(data[x].panlipunan[0].Pambayan)[y]) {
+                      Pambayan += data[x].panlipunan[0].Pambayan[y] + ', ';
+                    }
+                  }
+                }
+              }
+
+         
+              html += `
+                <p><strong>Samahang Kinasaniban:</strong> ${ SamahangKinasaniban ? SamahangKinasaniban : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                <p><strong>Pambarangay:</strong> ${ Pambarangay ? Pambarangay : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                <p><strong>Pambayan:</strong> ${ Pambayan ? Pambayan : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                
+                <hr>
+              `;
+                  
+          html += `
+            </div>
+          </div>`;
+          html +=      `</div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary bootstrap-modal-close" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  ${data[x].phoneNum}
+                </td>
+                <td class="status">
+                  ${status}
+                </td>
+                <td>
+                  <a class="btn btn-success activate" data-id="${data[x].id}" data-phoneNum="${data[x].phoneNum}">Activate</a>
+                  <a class="btn btn-danger de-activate" data-id="${data[x].id}">Deactivate</a>
+                </td>
+                
+              </tr>
+            `;
+        }
+        $('#user-list').html(html);
+      }
+    }
+
+    getData();
+
+    $('html').on('click', '.activate', async function(e) {
+      e.preventDefault();
+      var id = $(this).attr('data-id');
+      var phoneNum = $(this).attr('data-phoneNum');
+      const { error } = await database
+        .from('testing')
+        .update({ is_active: 1 })
+        .eq('id', id);
+        alert('Successfully Activated!');
+        $(this).parents('.user-list-tr').find('.status').html('<span class="badge badge-success">Active</span>');
+      
+      const accountSid = 'AC709689f2d0e73739a3e14b117e6405f6';
+      const authToken = 'a9567df9984e5487294b21217d534760';
+
+      $.ajax({
+          type: 'POST',
+          url: 'https://api.twilio.com/2010-04-01/Accounts/' + accountSid + '/Messages.json',
+          data: {
+              "To" : phoneNum.replace('09', '+639'),
+              "From" : "+14157693206",
+              "Body" : "You Bamos Account is now activated." 
+          },
+          beforeSend: function (xhr) {
+              xhr.setRequestHeader ("Authorization", "Basic " + btoa(accountSid + ':' + authToken));
+          },
+          success: function(data) {
+          },
+          error: function(data) {
+          }
+      });
+
+    })
+    $('html').on('click', '.de-activate', async function(e) {
+      e.preventDefault();
+      var id = $(this).attr('data-id');
+      const { error } = await database
+        .from('testing')
+        .update({ is_active: 0 })
+        .eq('id', id);
+        alert('Successfully De-Activated!');
+        $(this).parents('.user-list-tr').find('.status').html('<span class="badge badge-danger">Pending</span>')
+    })
+    $('#user-list').on('click','.bootstrap-modal', function() {
+      var target = $(this).attr('data-target');
+      $(target).modal('show');
+    });
+    $('#user-list').on('click','.bootstrap-modal-close', function() {
+      var target = $(this).parents('.modal').attr('id');
+      $('#'+target).modal('hide');
+
+    });
+
+
+
+
+    
+  </script>
+</body>
+
+</html>

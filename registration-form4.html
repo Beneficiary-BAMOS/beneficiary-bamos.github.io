@@ -20,70 +20,13 @@
           <label>*KALUSUGANG PAMPAMILYA*</label>
         </div>
 
-          <div class="input-box member">
+          
             <label>Kasama sa bahay na May Kapansanan</label>
-            <div class="column">
-            <input type="text" placeholder="Member 1" id="member1"    />
-            <input type="date" placeholder="Kapanganakan"  id="kapanganakan1"  />
-            </div>
-            <div class="column">
-              <input type="number" placeholder="Edad" id="edad1"   />
-              <input type="text" placeholder="Kapansanan" id="kapansanan1"  />
-              <div class="select-box">
-                <select id="kasarian1">
-                  <option hidden>Kasarian</option>
-                  <option>Babae</option>
-                  <option>Lalaki</option>
-                  <option>Iba pa</option>
-                </select>
-
-            </div>
-          </div>
+            <div> <button type="button" id="addMember" class="m-auto" style="width: 20%;">Add Family Member</button></div> <br>
+          
+          <div class="memContainer"></div>
             <br>
 
-            <div class="input-box member">
-              <label>Kasama sa bahay na May Kapansanan</label>
-              <div class="column">
-              <input type="text" placeholder="Member 2" id="member2"    />
-              <input type="date" placeholder="Kapanganakan"  id="kapanganakan2"  />
-              </div>
-              <div class="column">
-                <input type="number" placeholder="Edad" id="edad2"   />
-                <input type="text" placeholder="Kapansanan" id="kapansanan2"  />
-                <div class="select-box">
-                  <select id="kasarian2">
-                    <option hidden>Kasarian</option>
-                    <option>Babae</option>
-                    <option>Lalaki</option>
-                    <option>Iba pa</option>
-                  </select>
-  
-              </div>
-            </div>
-              <br>
-
-              <div class="input-box member">
-                <label>Kasama sa bahay na May Kapansanan</label>
-                <div class="column">
-                <input type="text" placeholder="Member 3" id="member3"    />
-                <input type="date" placeholder="Kapanganakan"  id="kapanganakan3"  />
-                </div>
-                <div class="column">
-                  <input type="number" placeholder="Edad" id="edad3"   />
-                  <input type="text" placeholder="Kapansanan" id="kapansanan3"  />
-                  <div class="select-box">
-                    <select id="kasarian3">
-                      <option hidden>Kasarian</option>
-                      <option>Babae</option>
-                      <option>Lalaki</option>
-                      <option>Iba pa</option>
-                    </select>
-    
-                </div>
-              </div>
-                <br>
-        
-            
  
 
         <div class="column">
@@ -263,6 +206,41 @@ body {
   checkConnection();
 
 
+  addFam();
+  let memberCount = 1;
+
+  function generateFamilyMemberBlock() {
+        let famAddBlock = `
+        <div class="input-box member family-member">
+            <label>Pangalan ${memberCount}</label>
+            <div class="column">
+               
+               <input type="text" placeholder="Member 1" name="member"    />
+               <input type="date" placeholder="Kapanganakan"  name="kapanganakan"  />
+               </div>
+               <div class="column">
+                 <input type="number" placeholder="Edad" name="edad"   />
+                 <input type="text" placeholder="Kapansanan" name="kapansanan"  />
+                 <div class="select-box">
+                   <select name="kasarian">
+                     <option hidden>Kasarian</option>
+                     <option>Babae</option>
+                     <option>Lalaki</option>
+                     <option>Iba pa</option>
+                   </select>
+               </div> 
+          </div>
+          `
+
+         memberCount++;
+        return famAddBlock;}
+
+function addFam(){
+  $( "#addMember" ).on( "click", function() {
+    let familyMemberBlock = generateFamilyMemberBlock();
+    $('.memContainer').append(familyMemberBlock);
+} );
+}
 
   document.querySelector('#submit4').onclick = function(e){
     e.preventDefault();
@@ -272,58 +250,23 @@ body {
 
   async function nextPage3() {
 
-    
-  //Family Array 1
 
-  $('#member1').val();
-    $('#kapanganakan1').val();
-    $('#edad1').val();
-    $('#kapansanan1').val();
-    $('#kasarian1').val();
+    let familyMembers = [];
 
-  //Family Array 2
+$('.family-member').each(function() {
+    let memberData = {
+        "member": $(this).find('[name="member"]').val(),
+        "kapanganakan": $(this).find('[name="kapanganakan"]').val(),
+        "edad": $(this).find('[name="edad"]').val(),
+        "kapansanan": $(this).find('[name="kapansanan"]').val(),
+        "kasarian": $(this).find('[name="kasarian"]').val(),
+        "nasagawa": $(this).find('[name="nasagawa"]').val(),
+    };
 
-  $('#member2').val();
-    $('#kapanganakan2').val();
-    $('#edad2').val();
-    $('#kapansanan2').val();
-    $('#kasarian2').val();
+    familyMembers.push(memberData);
+});
 
-    //Family Array 2
-    
-  $('#member3').val();
-    $('#kapanganakan3').val();
-    $('#edad3').val();
-    $('#kapansanan3').val();
-    $('#kasarian3').val();
-
-
-    let familymem1 = new Array;
-    familymem1.push({
-    "member1" :  $('#member1').val(),
-    "kapanganakan1": $('#kapanganakan1').val(),
-    "edad1":  $('#edad1').val(),
-    "kapansanan1":  $('#kapansanan1').val(),
-    "kasarian1":  $('#kasarian1').val()
-    });
-
-    let familymem2 = new Array;
-    familymem2.push({
-    "member2" :  $('#member2').val(),
-    "kapanganakan2": $('#kapanganakan2').val(),
-    "edad2":  $('#edad2').val(),
-    "kapansanan2":  $('#kapansanan2').val(),
-    "kasarian2":  $('#kasarian2').val()
-  });
-
-  let familymem3 = new Array;
-  familymem3.push({
-    "member3" :  $('#member3').val(),
-    "kapanganakan3": $('#kapanganakan3').val(),
-    "edad3":  $('#edad3').val(),
-    "kapansanan3":  $('#kapansanan3').val(),
-    "kasarian3":  $('#kasarian3').val()
-  });
+console.log(familyMembers);
 
 
 
@@ -333,12 +276,13 @@ body {
       .from('kalusuganPWD')
       .insert([
         {
-          Family_mem_1: familymem1,
-          Family_mem_2: familymem2,
-          Family_mem_3: familymem3,
+          Family_members: familyMembers,
           user_id: userId
-        },
+        }
+       
       ])
+
+   
 
     alert("New User Created!");
     window.location.href = 'registration-form5.html'
