@@ -413,7 +413,7 @@
              
 
   `;
-              html += `<h3>Registration 1</h3>`;
+              html += `<h3>Basic Information</h3>`;
 
               html += ` <p><strong>Name:</strong> ${ data[x].miyembro[0]?.pinuno ? data[x].miyembro[0].pinuno  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                         <p><strong>Address:</strong> ${ data[x].miyembro[0]?.nakatira ? data[x].miyembro[0].nakatira : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
@@ -457,7 +457,7 @@
                 html += `<p><a href="../../../../form-lp.html?user_id=${data[x].id}">null</a></p>`;
               }
 
-              html += `<br><h3>Registration 2</h3>`;
+              html += `<br><h3>Pangkabuhayan</h3>`;
               html += ` <p><strong>Lupang Kinatatayuan:</strong> ${ data[x].pangkabuhayan[0]?.LupangKinatatayuan ? data[x].pangkabuhayan[0].LupangKinatatayuan  : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                         <p><strong>Bahay na Tinitirahan:</strong> ${ data[x].pangkabuhayan[0]?.BahaynaTinitirhan ? data[x].pangkabuhayan[0].BahaynaTinitirhan : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                         <p><strong>Lupang Sakahan/Pinagyayaman:</strong> ${ data[x].pangkabuhayan[0]?.LupangSakahanPinagyayaman ? data[x].pangkabuhayan[0].LupangSakahanPinagyayaman : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
@@ -472,7 +472,7 @@
                         <p><strong>Mga Kasangkapan sa Bahay:</strong> ${ data[x].pangkabuhayan[0]?.MgaKasangkapansaBahay ? data[x].pangkabuhayan[0].MgaKasangkapansaBahay : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                       `;
 
-              html += `<br><h3>Registration 3 (Bata)</h3>`;
+              html += `<br><h3>NUTRISYON: Mga Batang May Edad na 0-6 Taong Gulang</h3>`;
               html += `<p>Member</p>`;
             
               html += ` <p><strong>Pangalan:</strong> ${ data[x].nutrisyon[0]?.member_1 ? JSON.parse(data[x].nutrisyon[0].member_1).name : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
@@ -508,7 +508,7 @@
                 html += `<p><a href="../../../../form-lp.html?user_id=${data[x].id}">null</a></p>`;
               }
         
-              html += `<br><h3>Registration 4 (PWD)</h3>`;
+              html += `<br><h3>KALUSUGANG PAMPAMILYA: Kasama sa bahay na May Kapansanan</h3>`;
               html += `<p>Member</p>`;
 
               html += `<br><h4>Family Member - PWD</h4>`;
@@ -536,7 +536,7 @@
                 html += `<p><a href="../../../../form-lp.html?user_id=${data[x].id}">null</a></p>`;
               }
 
-              html += `<br><h3>Registration 5</h3>`;
+              html += `<br><h3>KALUSUGANG PAMPAMILYA</h3>`;
           
               html += ` <p><strong>Kabuuang bilang ng Mag-asawang Nagsasama:</strong> ${ data[x].kalusuganBuntis.length > 0 ? data[x].kalusuganBuntis[0].MagAsawangNagsasama : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                         <p><strong>Bilang ng Ipinagbuntis:</strong> ${ data[x].kalusuganBuntis.length > 0 ? data[x].kalusuganBuntis[0].BilangngIpinagbuntis : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
@@ -547,7 +547,7 @@
                         <hr>
                       `;
                     
-              html += `<br><h3>Registration 6</h3>`;
+              html += `<br><h3>PANLIPUNAN</h3>`;
               var panlipunan = null;
               var SamahangKinasaniban = null;
               var Pambarangay = null;
