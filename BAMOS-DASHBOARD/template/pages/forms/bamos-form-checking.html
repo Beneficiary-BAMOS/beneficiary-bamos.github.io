@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>BAMOS ADMIN FORM CHECKING</title>
+  <title>BAMOS ADMIN FORM</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../vendors/feather/feather.css">
   <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
@@ -110,7 +110,7 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../../pages/forms/bamos-form-checking.html">For checking</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../pages/forms/bamos-form-checking.html">Form</a></li>
               </ul>
             </div>
           </li>
@@ -134,7 +134,8 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/tables/bamos-users.html">See all tables</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/tables/bamos-users.html">Users Activation</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/tables/bamos-user-info.html">Users Information</a></li>
               </ul>
             </div>
           </li>
@@ -155,7 +156,6 @@
                         <option hidden="">Status</option>
                         <option value="Current Resident">Current Resident</option>
                         <option value="Previous Resident">Previous Resident</option>
-                        <option value="Deceased Resident">Deceased Resident</option>
                       </select>
                     </div>
 
@@ -169,13 +169,13 @@
                       <div class="col-md-6 mb-4 pb-2">
                         <div class="form-outline">
                           <input type="text" id="middlename" class="form-control form-control-lg">
-                          <label class="form-label" for="middlename">Middle name</label>
+                          <label class="form-label" for="middlename">First name</label>
                         </div>
                       </div>
                       <div class="col-md-6 mb-4 pb-2">
                         <div class="form-outline">
                           <input type="text" name="firstname" id="firstname" class="form-control form-control-lg">
-                          <label class="form-label" for="firstname">First name</label>
+                          <label class="form-label" for="firstname">Middle name</label>
                         </div>
                       </div>
                       <div class="col-md-6 mb-4 pb-2">
@@ -214,46 +214,44 @@
                   <div class="p-5">
                     <h4 class="card-title">Additional Info</h4>
 
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div class="form-outline form-white">
+                          <div class="select-box w-100">
+                            <select id="sitio" class="w-100 p-md-3">
+                              <option hidden></option>
+                              <option value="1">Sitio 1</option>
+                              <option value="2">Sitio 2</option>
+                              <option value="3">Sitio 3</option>
+                              <option value="4">Sitio 4</option>
+                            </select>
+                            <label class="form-label" for="sitio">Sitio</label>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div class="form-outline form-white">
+                          <input type="number" id="housenum" min="1" class="form-control form-control-lg" />
+                          <label class="form-label" for="housenum">House number</label>
+                        </div>
+                      </div>
+                    </div>
+
                     <div class="mb-4 pb-2">
                       <div class="form-outline form-white">
-                        <input type="text" id="address" class="form-control form-control-lg">
+                        <input type="text" id="street" class="form-control form-control-lg" />
+                        <label class="form-label" for="street">Street Name</label>
+                      </div>
+                    </div>
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline form-white">
+                        <input type="text" id="address" class="form-control form-control-lg" value="Barangay Bahay Pare, Meycauayan, Bulacan" readonly="Barangay Bahay Pare"/>
                         <label class="form-label" for="address">Address</label>
                       </div>
                     </div>
-
-                    <div class="mb-4 pb-2">
-                      <div class="form-outline form-white">
-                        <input type="text" id="housenum" class="form-control form-control-lg">
-                        <label class="form-label" for="housenum">Street Name + House number</label>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-5 mb-4 pb-2">
-
-                        <div class="form-outline form-white">
-                          <input type="text" id="sitio" class="form-control form-control-lg">
-                          <label class="form-label" for="sitio">Sitio</label>
-                        </div>
-
-                      </div>
-                      <div class="col-md-7 mb-4 pb-2">
-
-                        <div class="form-outline form-white">
-                          <input type="text" id="purok" class="form-control form-control-lg">
-                          <label class="form-label" for="purok">Purok</label>
-                        </div>
-
-                      </div>
-                    </div>
-
-                    <div class="mb-4 pb-2">
-                      <div class="form-outline form-white">
-                        <input type="text" id="email" class="form-control form-control-lg">
-                        <label class="form-label" for="email">E-mail (optional)</label>
-                      </div>
-                    </div>
-
                     <div class="row">
                       <div class="col-md-5 mb-4 pb-2">
 
