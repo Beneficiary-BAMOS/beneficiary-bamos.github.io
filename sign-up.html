@@ -403,6 +403,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script type="text/javascript">
 
+var userData = JSON.parse(localStorage.getItem('userDetails'));
+      var userId = userData.id;
+
     // Import the Supabase client
 
     // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
@@ -429,7 +432,8 @@
         console.error('Error:', error.message);
       }
     }
-
+    var userData = JSON.parse(localStorage.getItem('userDetails'));
+      var userId = userData.id;
     // Call the checkConnection function
     checkConnection();
 
@@ -461,6 +465,10 @@
       var pass = document.getElementById('pass').value;
       var confirmPass = document.getElementById('cpass').value;
       var checkbox = document.querySelector('[type="checkbox"]:checked');
+
+      var userData = JSON.parse(localStorage.getItem('userDetails'));
+      var userId = userData.id;
+      var userHouse = userData.houseNum;
        
       if (pass !== confirmPass) {
             alert('Passwords do not match');
@@ -470,6 +478,16 @@
             alert('Please check Terms and Conditions');
             return false;
       }
+      console.log(houseNum);
+      console.log(userData.houseNum);
+      if(houseNum === userHouse){
+        alert('House number is already used');
+        return false;
+      }
+      
+
+
+
        
       let { data, error } = await database
         .from('testing')
