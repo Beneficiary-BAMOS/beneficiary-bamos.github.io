@@ -455,34 +455,92 @@
           var html = '';
 
           genRep[1] = [];
+          genRep[1]['Male'] = 0;
+          genRep[1]['Female'] = 0;
+          genRep[1]['Senior'] = 0;
+          genRep[1]['Employeed'] = 0;
+          genRep[1]['Unemployeed'] = 0;
+          genRep[1]['PWD'] = 0;
+          genRep[1]['Single'] = 0;
+          genRep[1]['Married'] = 0;
           genRep[1]['total'] = 0;
           genRep[1]['bata'] = 0;
           genRep[1]['pwd'] = 0;
 
-          console.log(genRep[1]);
-
           genRep[2] = [];
+          genRep[2]['Male'] = 0;
+          genRep[2]['Female'] = 0;
+          genRep[2]['Senior'] = 0;
+          genRep[2]['Employeed'] = 0;
+          genRep[2]['Unemployeed'] = 0;
+          genRep[2]['PWD'] = 0;
+          genRep[2]['Single'] = 0;
+          genRep[2]['Married'] = 0;
           genRep[2]['total'] = 0;
           genRep[2]['bata'] = 0;
-          genRep[2]['pwd'] = 0;
+          
 
           genRep[3] = [];
+          genRep[3]['Male'] = 0;
+          genRep[3]['Female'] = 0;
+          genRep[3]['Senior'] = 0;
+          genRep[3]['Employeed'] = 0;
+          genRep[3]['Unemployeed'] = 0;
+          genRep[3]['PWD'] = 0;
+          genRep[3]['Single'] = 0;
+          genRep[3]['Married'] = 0;
           genRep[3]['total'] = 0;
           genRep[3]['bata'] = 0;
-          genRep[3]['pwd'] = 0;
+          
 
           genRep[4] = [];
+          genRep[4]['Male'] = 0;
+          genRep[4]['Female'] = 0;
+          genRep[4]['Senior'] = 0;
+          genRep[4]['Employeed'] = 0;
+          genRep[4]['Unemployeed'] = 0;
+          genRep[4]['PWD'] = 0;
+          genRep[4]['Single'] = 0;
+          genRep[4]['Married'] = 0;
           genRep[4]['total'] = 0;
           genRep[4]['bata'] = 0;
-          genRep[4]['pwd'] = 0;
 
           console.log('data', data);
 
           for(var x = 0; x < data.length; x++) {
             if(data[x].sitio) {
                 var sitio = data[x].sitio;
+                //genRep[sitio]['total'] = genRep[sitio]['total'] + 1;
 
-                genRep[sitio]['total'] = genRep[sitio]['total'] + 1;
+                for(var y = 0; y < data[x].miyembro.length; y++) {
+
+                    for (var z = 0; z < data[x].miyembro[y].Family_members.length; z++)  {
+                        if (data[x].miyembro[y].Family_members[z]['gender'] == 'Male')  {
+                            genRep[sitio]['Male'] = genRep[sitio]['Male'] + 1;
+                        } else if (data[x].miyembro[y].Family_members[z]['gender'] == 'Female') {
+                            genRep[sitio]['Female'] = genRep[sitio]['Female'] + 1;
+                        } else {
+
+                        }
+
+                        if (data[x].miyembro[y].Family_members[z]['Senior'] <= 60)  {
+                            genRep[sitio]['Senior'] = genRep[sitio]['Senior'] + 1;
+                        }
+
+                        if (data[x].miyembro[y].Family_members[z]['additionalEmployment'] == 'Employed')  {
+                            genRep[sitio]['Employed'] = genRep[sitio]['Employed'] + 1;
+                        }
+
+                        if (data[x].miyembro[y].Family_members[z]['additionalEmployment'] == 'Unemployed')  {
+                            genRep[sitio]['Unemployed'] = genRep[sitio]['Unemployed'] + 1;
+                        }
+
+                        genRep[sitio][data[x].miyembro[y].Family_members[z]['civilStatus']] = genRep[sitio][data[x].miyembro[y].Family_members[z]['civilStatus']] + 1;
+
+                    }
+
+                }
+
 
                 if(data[x].miyembro[0]?.Family_members != null) {
                     if(data[x].miyembro[0]?.Family_members.length > 0) {
@@ -503,31 +561,56 @@
                 if(data[x].kalusuganPWD[0]?.Family_members != null) {
                     if(data[x].kalusuganPWD[0]?.Family_members.length > 0) {
                         for(var y = 0; y < data[x].kalusuganPWD[0]?.Family_members.length; y++) {
-                            genRep[sitio]['pwd'] = genRep[sitio]['pwd'] + 1; 
+                            genRep[sitio]['PWD'] = genRep[sitio]['PWD'] + 1; 
                         }
                     }
                 }
             }
           }
 
-          for(var x = sitio_num; x <= sitio_num; x++) {
-            html += `
-            <div class="row item">
-                <div class="col-xs-4 desc">
-                    ${x}
-                </div>
-                <div class="col-xs-3 qty">
-                    Bata (${genRep[x]['bata']})<br>
-                    PWD (${genRep[x]['pwd']})
-                </div>
-                <div class="col-xs-5 amount text-right">
-                    ${genRep[x].total}
-                </div>
-            </div>
-            `;
-          }
+          $('#genRep-list').html('');
 
-          $('#genRep-list').html(html);
+          for(var q = sitio_num; q <= sitio_num; q++) {
+    
+    zMale = genRep[q]['Male'];
+    zFemale = genRep[q]['Female'];
+    zSenior = genRep[q]['Senior'];
+    zEmployeed = genRep[q]['Employeed'];
+    zUnemployeed = genRep[q]['Unemployeed'];
+    zPWD = genRep[q]['PWD'];
+    zSingle = genRep[q]['Single'];
+    zMarried = genRep[q]['Married'];
+
+    html = `
+    <div class="row item">
+        <div class="col-xs-3 qty">
+            Sitio ${q}
+        </div>
+        <div class="col-xs-3 qty">
+            Male <br>
+            Female <br>
+            Senior <br>
+            Employeed <br>
+            Unemployeed <br>
+            PWD <br>
+            Single <br>
+            Married <br>
+        </div>
+        <div class="col-xs-5 amount text-right">
+            ${zMale}<br>
+            ${zFemale}<br>
+            ${zSenior}<br>
+            ${zEmployeed}<br>
+            ${zUnemployeed}<br>
+            ${zPWD}<br>
+            ${zSingle}<br>
+            ${zMarried}<br>
+        </div>
+    </div>
+    `;
+
+    $('#genRep-list').append(html);
+  }
        
       }
       
