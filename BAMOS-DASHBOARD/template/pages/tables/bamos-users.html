@@ -408,6 +408,8 @@
                           var user = data[x].firstname + ' ' + data[x].middlename + ' ' + data[x].lastname;
         var address = data[x].sitio  + ' ' + data[x].purok;
         
+                          //console.log(data[x].email);
+
         html += `
           <div>
             <div>
@@ -426,9 +428,9 @@
                         <p><strong>Employed:</strong> ${ data[x].miyembro[0]?.Employed ? data[x].miyembro[0].Employed : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                         <p><strong>Sitio:</strong> ${ data[x].miyembro[0]?.Sitio ? data[x].miyembro[0].Sitio : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                         <p><strong>Purok:</strong> ${ data[x].miyembro[0]?.Purok ? data[x].miyembro[0].Purok : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
-                        <p><strong>Email:</strong> ${ data[x].miyembro[0]?.email ? data[x].miyembro[0].email : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
-                        <p><strong>Phone number:</strong> ${ data[x].miyembro[0]?.phoneNum ? data[x].miyembro[0].phoneNum : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
-                        <p><strong>Emergency number:</strong> ${ data[x].miyembro[0]?.emergencyNum ? data[x].miyembro[0].emergencyNum : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Email:</strong> ${ data[x].email ? data[x].email : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Phone number:</strong> ${ data[x].phoneNum ? data[x].phoneNum : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Emergency number:</strong> ${ data[x].emergencyNum ? data[x].emergencyNum : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                       `;
               /*
               html += `<br><h4>Family Member</h4>`;
