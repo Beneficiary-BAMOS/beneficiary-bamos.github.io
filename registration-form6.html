@@ -23,8 +23,8 @@
           <div class="input-box member">
             <label>A. Samahang Kinasaniban:</label>
             <div class="column">
-            <input type="text" placeholder="Organisasyon" name="organisasyon1"   />
-            <input type="text" placeholder="Katungkulan"  name="katungkulan1" />
+            <input type="text" placeholder="Organisasyon" id="organisasyon1" name="organisasyon1"   />
+            <input type="text" placeholder="Katungkulan" id="katungkulan1" name="katungkulan1" />
             </div>
           </div>
             <br>
@@ -32,7 +32,7 @@
             <div class="input-box member">
                 <label>B. Kanino Sumasangguni kung may suliraning pambarangay?</label>
                 <div class="column">
-                <input type="text" placeholder=""  name="pambarangay" />
+                <input type="text" placeholder="Pambarangay" id="pambarangay"  name="pambarangay" />
                 </div>
               </div>
                 <br>
@@ -40,7 +40,7 @@
                 <div class="input-box member">
                     <label>C. Kanino Sumasangguni kung may suliraning pambayan?</label>
                     <div class="column">
-                    <input type="text" placeholder="" name="pambayan"  />
+                    <input type="text" placeholder="Pambayan" id="pambayan" name="pambayan"  />
                     </div>
                     <br>
         
@@ -232,37 +232,49 @@ body {
   async function nextPage5() {
 
 
-  var posisyon1  =  $('[name="organisasyon1"]').val() +','+ $('[name="katungkulan1"]').val();
-  var posisyon2 = $('[name="organisasyon2"]').val() +','+  $('[name="katungkulan2"]').val();
-  var posisyon3 =   $('[name="organisasyon3"]').val() +','+  $('[name="katungkulan3"]').val();
+  // var posisyon1  =  $('[name="organisasyon1"]').val() +','+ $('[name="katungkulan1"]').val();
+  // var posisyon2 = $('[name="organisasyon2"]').val() +','+  $('[name="katungkulan2"]').val();
+  // var posisyon3 =   $('[name="organisasyon3"]').val() +','+  $('[name="katungkulan3"]').val();
 
-  var finalpositions = [
-    posisyon1, posisyon2, posisyon3
-  ];
+  var organisasyon1  =  $("#organisasyon1").val();
+  var katungkulan1 =  $("#katungkulan1").val();
+  var pambarangay =  $("#pambarangay").val();
+  var pambayan =  $("#pambayan").val();
+  // var posisyon2 = $('[name="organisasyon2"]').val() ;
+  // var posisyon3 =   $('[name="organisasyon3"]').val() ;
+
+  // var finalpositions = [
+  //   posisyon1, posisyon2, posisyon3
+  // ];
 
  
-  var pambarangay = new Array;
-  var pambayan = new Array;
+  // var pambarangay = new Array;
+  // var pambayan = new Array;
 
 
   var userId = userData.id;
 
+ 
+
+
+
+
   
-  $('[name="pambarangay"]').each(function() {
-    pambarangay.push($(this).val());
-  });
-  $('[name="pambayan"]').each(function() {
-    pambayan.push($(this).val());
-  });
+  // $('[name="pambarangay"]').each(function() {
+  //   pambarangay.push($(this).val());
+  // });
+  // $('[name="pambayan"]').each(function() {
+  //   pambayan.push($(this).val());
+  // });
  
     const { data, error } = await database
       .from('panlipunan')
       .insert([
         {
-        
-          Pambarangay: JSON.stringify(pambarangay),
-          Pambayan: JSON.stringify(pambayan),
-          SamahangKinasaniban: JSON.stringify(finalpositions),
+          organisasyon1:organisasyon1,
+          katungkulan1: katungkulan1,
+          pambarangay: pambarangay,
+          pambayan: pambayan,
           user_id: userId
 
         },

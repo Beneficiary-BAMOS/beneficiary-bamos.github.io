@@ -31157,3 +31157,41 @@ div.tagsinput span.tag a {
     display: none;
   }
 }
+
+
+.drop-print {
+  list-style: none;
+  background:#fff;
+  width: 100%;
+  top: 30px;
+  margin: 0;
+  padding: 0;
+  z-index: 9;
+  box-shadow: 0 8px 1rem #0000003d;
+  display: none;
+}
+
+.drop-print.export {
+  width: 250px;
+  right: 0;
+}
+
+.drop-print li {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #dedede;
+}
+
+.drop-print li:hover {
+  background: #ebebeb;
+}
+
+.drop-print li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+  display: block;
+}
+
+.drop-print.open {
+  display: block;
+}

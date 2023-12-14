@@ -22,7 +22,7 @@
                             <tr>
                                 <td class="title">
                                     <img
-                                        src="thesis-main/assets/img/about.png"
+                                        src="../../assets/img/about.png"
                                         style="width: 150px; max-width: 200px; margin-left: 650px;" />
                                 </td>
                             </tr>
@@ -70,13 +70,13 @@
                             <div class="row">
                                 <div class="col-xs-4">Sitio</div>
                                 <div class="col-xs-3">Information</div>
-                                <div class="col-xs-5 text-right">Total Population per Sitio</div>
+                                <div class="col-xs-5 text-right">Total Population</div>
                             </div>
                             </div>
                             <div class="items" id="genRep-list">
                                     <div class="row item">
                                         <div class="col-xs-4 desc">
-                                        -----
+                                            <span class="sitio_number"></span>
                                         </div>
                 
                                         <div class="col-xs-3 qty">
@@ -414,6 +414,8 @@
    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
    <script src="../../BAMOS-DASHBOARD/template/js/dashboard.js"></script>
    <script>
+      var sitio_num = new URL(window.location).searchParams.get("sitio");
+
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -439,7 +441,6 @@
       
           $('.pending-users').text(data.length);
 
-
           var { data, error } = await database.from('testing').select(`
             *,
             kalusuganBuntis ( * ),
@@ -448,7 +449,7 @@
             nutrisyon ( * ),
             pangkabuhayan ( * ),
             panlipunan ( * )
-          `).eq('role', 2);
+          `).eq('sitio', sitio_num);
 
           var genRep = {};
           var html = '';
@@ -457,6 +458,8 @@
           genRep[1]['total'] = 0;
           genRep[1]['bata'] = 0;
           genRep[1]['pwd'] = 0;
+
+          console.log(genRep[1]);
 
           genRep[2] = [];
           genRep[2]['total'] = 0;
@@ -507,7 +510,7 @@
             }
           }
 
-          for(var x = 1; x <= 4; x++) {
+          for(var x = sitio_num; x <= sitio_num; x++) {
             html += `
             <div class="row item">
                 <div class="col-xs-4 desc">

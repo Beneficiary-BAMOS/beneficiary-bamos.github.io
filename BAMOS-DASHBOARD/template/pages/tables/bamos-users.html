@@ -426,8 +426,11 @@
                         <p><strong>Employed:</strong> ${ data[x].miyembro[0]?.Employed ? data[x].miyembro[0].Employed : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                         <p><strong>Sitio:</strong> ${ data[x].miyembro[0]?.Sitio ? data[x].miyembro[0].Sitio : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                         <p><strong>Purok:</strong> ${ data[x].miyembro[0]?.Purok ? data[x].miyembro[0].Purok : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Email:</strong> ${ data[x].miyembro[0]?.email ? data[x].miyembro[0].email : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Phone number:</strong> ${ data[x].miyembro[0]?.phoneNum ? data[x].miyembro[0].phoneNum : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                        <p><strong>Emergency number:</strong> ${ data[x].miyembro[0]?.emergencyNum ? data[x].miyembro[0].emergencyNum : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                       `;
-
+              /*
               html += `<br><h4>Family Member</h4>`;
               if(data[x].miyembro[0]?.Family_members != null) {
                 if(data[x].miyembro[0]?.Family_members.length > 0) {
@@ -586,9 +589,9 @@
                 <p><strong>Samahang Kinasaniban:</strong> ${ SamahangKinasaniban ? SamahangKinasaniban : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                 <p><strong>Pambarangay:</strong> ${ Pambarangay ? Pambarangay : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                 <p><strong>Pambayan:</strong> ${ Pambayan ? Pambayan : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
-                
                 <hr>
               `;
+              */
                   
           html += `
             </div>

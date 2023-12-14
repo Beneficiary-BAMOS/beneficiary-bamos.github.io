@@ -161,8 +161,25 @@
                     </li>
                   </ul>
                   <div>
-                    <div class="btn-wrapper">
-                      <a href="gen-rep.html" class="btn btn-otline-dark"><i class="icon-printer"></i> Print Report</a>
+                    <div class="btn-wrapper position-relative">
+                      <a id="printBtn" class="btn btn-otline-dark"><i class="icon-printer"></i> Print Report</a>
+                      <ul class="position-absolute drop-print">
+                        <li>
+                          <a href="gen-rep.html">General</a>
+                        </li>
+                        <li>
+                          <a href="gen-rep-specific.html?sitio=1">Sitio 1</a>
+                        </li>
+                        <li>
+                          <a href="gen-rep-specific.html?sitio=2">Sitio 2</a>
+                        </li>
+                        <li>
+                          <a href="gen-rep-specific.html?sitio=3">Sitio 3</a>
+                        </li>
+                        <li>
+                          <a href="gen-rep-specific.html?sitio=4">Sitio 4</a>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -904,7 +921,13 @@
     }
   }
 
+  $('#printBtn').click(function() {
+    $('.drop-print').toggleClass('open');
+  });
 
+  $('.drop-print li a').click(function() {
+    $('.drop-print').toggleClass('open');
+  });
 
 </script>
 

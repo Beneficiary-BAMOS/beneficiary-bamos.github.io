@@ -8,7 +8,7 @@
 
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    
+
     <!-- <link rel="stylesheet" href="/assets/css/style.css" /> -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
@@ -21,31 +21,53 @@
           <label>*NUTRISYON: Mga Batang May Edad na 0-6 Taong Gulang*</label>
         </div>
 
-       
-       
+        <div class="input-box member family-member">
+          <label>Pangalan</label>
+          <div class="column">
+          <input type="text" placeholder="Member" name="member"/>
+          <input type="date" placeholder="Kapanganakan" name="kapanganakan"/>
+          </div>
+          <div class="column">
+            <input type="number" placeholder="Gulang sa buwan" name="gulang"/>
+            <input type="text" placeholder="Timbang " name="timbang" />
+            <input type="text" placeholder="Imunisasyon" name="imunisasyon" />
+            <input type="text" placeholder="Nasagawa"  name="nasagawa"/>
+          </div>
+        </div>
+
+
+
         <button type="button" id="addMember" class="m-auto" style="width: 20%;">Add Family Member</button>
-        <!-- <div class="input-box member">
-          <label>Pangalan 1</label>
-          <div class="column">
-          <input type="text" placeholder="Member 1" id="member1"/>
-          <input type="date" placeholder="Kapanganakan" id="kapanganakan1"/>
-          </div>
-          <div class="column">
-            <input type="number" placeholder="Gulang sa buwan" id="gulang1"/>
-            <input type="text" placeholder="Timbang " id="timbang1" />
-            <input type="text" placeholder="Imunisasyon" id="imunisasyon1" />
-            <input type="text" placeholder="Nasagawa"  id="nasagawa1"/>
-          </div>
-        </div> -->
+
         <div class="memContainer"></div>
-        
+        <table>
+          <thead>
+            <tr>
+              <th>Miyembro</th>
+              <th>Kapanganakan</th>
+              <th>Gulang</th>
+              <th>Timbang</th>
+              <th>Imunisasyon</th>
+              <th>Nasagawa</th>
+              </tr>
+
+
+            </thead>
+            <tbody id="memberList">
+
+            </tbody>
+
+          </table>
+
+
+
         <div class="column">
           <button type="button"><a href="registration-form2.html">Previous Page</a></button>
         <button class="clear">Clear Form</button>
         <button type="submit" id="submit3">Next</button>
         </div>
 
-       
+
       </form>
     </section>
     <script src="form-global.js"></script>
@@ -67,6 +89,21 @@ body {
   justify-content: center;
   padding: 20px;
   background: linear-gradient(to bottom, #b3b6b6, #A7D397 );
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 .container {
   position: relative;
@@ -218,89 +255,93 @@ body {
   checkConnection();
 
 
-  addFam();
-  let memberCount = 1;
+var members = [];
 
-  function generateFamilyMemberBlock() {
-        let famAddBlock = `<div class="input-box member family-member">
-            <label>Pangalan ${memberCount}</label>
-            <div class="column">
-            <input type="text" placeholder="Member" name="member"/>
-            <input type="date" placeholder="Kapanganakan" name="kapanganakan"/>
-            </div>
-            <div class="column">
-              <input type="number" placeholder="Gulang sa buwan" name="gulang"/>
-              <input type="text" placeholder="Timbang " name="timbang" />
-              <input type="text" placeholder="Imunisasyon" name="imunisasyon" />
-              <input type="text" placeholder="Nasagawa"  name="nasagawa"/>
-            </div>
-          </div>`
+$(document).ready(function () {
+            // Array to store members
 
-         memberCount++;
-        return famAddBlock;}
 
-function addFam(){
-  $( "#addMember" ).on( "click", function() {
-    let familyMemberBlock = generateFamilyMemberBlock();
-    $('.memContainer').append(familyMemberBlock);
-} );
-}
+            // Event listener for Add Member button
+            $("#addMember").on("click", function () {
+                // Get input values
+                var memberName = $('[name="member"]').val();
+                var memberAge = $('[name="kapanganakan"]').val();
+                var birthdate = $('[name="gulang"]').val();
+                var edad = $('[name="timbang"]').val();
+                var disability = $('[name="imunisasyon"]').val();
+                var gender = $('[name="nasagawa"]').val();
+
+
+
+                    // Add member to the array
+                    members.push({
+                        "name": memberName,
+                        "age": memberAge,
+                        "birthdate": birthdate,
+                        "edad": edad,
+                        "disability": disability,
+                        "gender": gender,
+
+                    });
+
+                    // Display members
+                    displayMembers();
+
+                    // Reset input fields
+                    $('.form')[0].reset();
+
+                // else {
+                //     alert("Please fill in all required fields.");
+                // }
+            });
+
+            // Function to display members
+            function displayMembers() {
+                // Clear previous member list
+                $("#memberList").html("");
+
+
+                // Loop through members and display them
+
+                $.each(members, function (i, member) {
+                  $("tbody").append(`
+                    <tr>
+                      <td>${member["name"]}</td>
+                      <td>${member["age"]}</td>
+                      <td>${member["birthdate"]}</td>
+                      <td>${member["edad"]}</td>
+                      <td>${member["disability"]}</td>
+                      <td>${member["gender"]}</td>
+                    </tr>
+                    break;
+                 `)}
+                );
+            }
+        });
 
 
 
   document.querySelector('#submit3').onclick = function(e){
     e.preventDefault();
+
     nextPage2();
 
   }
 
   async function nextPage2() {
 
-    let familyMembers = [];
 
-$('.family-member').each(function() {
-    let memberData = {
-        "member": $(this).find('[name="member"]').val(),
-        "kapanganakan": $(this).find('[name="kapanganakan"]').val(),
-        "gulang": $(this).find('[name="gulang"]').val(),
-        "timbang": $(this).find('[name="timbang"]').val(),
-        "imunisasyon": $(this).find('[name="imunisasyon"]').val(),
-        "nasagawa": $(this).find('[name="nasagawa"]').val(),
-    };
 
-    familyMembers.push(memberData);
-});
-
-console.log(familyMembers);
-
-    // let  member = new Array();
-    
-
-    // for ($i=0; $i <= 6; $i++) {
-
-    //   member.push({
-    //     name: $(`#member${$i+1}`).val(),
-    //     bday: $(`#kapanganakan${$i+1}`).val(),
-    //     age: $(`#gulang${$i+1}`).val(),
-    //     weight: $(`#timbang${$i+1}`).val(),
-    //     imunization: $(`#imunisasyon${$i+1}`).val(),
-    //     nagsagawa: $(`#nasagawa${$i+1}`).val()
-    //   });
-    // }
-
+    console.log()
+      var familymember = JSON.parse(JSON.stringify(members));
+      console.log(familymember);
 
     const { data, error } = await database
       .from('nutrisyon')
       .insert([
         {
-            // member_1: member[0],
-            // member_2: member[1],
-            // member_3: member[2],
-            // member_4: member[3],
-            // member_5: member[4],
-            // member_6: member[5],
-            // member_7: member[6],
-            Family_members: familyMembers,
+           
+            Family_members:familymember,
 
             user_id: userData.id
         },

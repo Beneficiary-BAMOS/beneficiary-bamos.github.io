@@ -22,10 +22,49 @@
 
           
             <label>Kasama sa bahay na May Kapansanan</label>
+            <div class="input-box member family-member">
+              <label>Pangalan </label>
+              <div class="column">
+                 
+                 <input type="text" placeholder="Member 1" name="member"    />
+                 <input type="date" placeholder="Kapanganakan"  name="kapanganakan"  />
+                 </div>
+                 <div class="column">
+                   <input type="number" placeholder="Edad" name="edad"   />
+                   <input type="text" placeholder="Kapansanan" name="kapansanan"  />
+                   <div class="select-box">
+                     <select name="kasarian">
+                       <option hidden>Kasarian</option>
+                       <option>Babae</option>
+                       <option>Lalaki</option>
+                       <option>Iba pa</option>
+                     </select>
+                 </div> 
+            </div>
             <div> <button type="button" id="addMember" class="m-auto" style="width: 20%;">Add Family Member</button></div> <br>
           
           <div class="memContainer"></div>
             <br>
+
+            <table>
+              <thead> 
+                <tr>
+                <th>Miyembro</th>
+                <th>Kapanganakan</th>
+                <th>Edad</th>
+                <th>Kapansanan</th>
+                <th>Kasarian</th>
+                </tr></thead>
+              <tbody id="memberList">
+               
+                  
+              </tbody>
+              
+              </table>
+
+            
+              <!-- Member details will be displayed here -->
+          </div>
 
  
 
@@ -55,6 +94,22 @@ body {
   justify-content: center;
   padding: 20px;
   background: linear-gradient(to bottom, #b3b6b6, #A7D397 );
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 .container {
   position: relative;
@@ -206,41 +261,101 @@ body {
   checkConnection();
 
 
-  addFam();
-  let memberCount = 1;
+  // addFam();
+  // let memberCount = 1;
 
-  function generateFamilyMemberBlock() {
-        let famAddBlock = `
-        <div class="input-box member family-member">
-            <label>Pangalan ${memberCount}</label>
-            <div class="column">
+  // function generateFamilyMemberBlock() {
+  //       let famAddBlock = `
+  //       <div class="input-box member family-member">
+  //           <label>Pangalan ${memberCount}</label>
+  //           <div class="column">
                
-               <input type="text" placeholder="Member 1" name="member"    />
-               <input type="date" placeholder="Kapanganakan"  name="kapanganakan"  />
-               </div>
-               <div class="column">
-                 <input type="number" placeholder="Edad" name="edad"   />
-                 <input type="text" placeholder="Kapansanan" name="kapansanan"  />
-                 <div class="select-box">
-                   <select name="kasarian">
-                     <option hidden>Kasarian</option>
-                     <option>Babae</option>
-                     <option>Lalaki</option>
-                     <option>Iba pa</option>
-                   </select>
-               </div> 
-          </div>
-          `
+  //              <input type="text" placeholder="Member 1" name="member"    />
+  //              <input type="date" placeholder="Kapanganakan"  name="kapanganakan"  />
+  //              </div>
+  //              <div class="column">
+  //                <input type="number" placeholder="Edad" name="edad"   />
+  //                <input type="text" placeholder="Kapansanan" name="kapansanan"  />
+  //                <div class="select-box">
+  //                  <select name="kasarian">
+  //                    <option hidden>Kasarian</option>
+  //                    <option>Babae</option>
+  //                    <option>Lalaki</option>
+  //                    <option>Iba pa</option>
+  //                  </select>
+  //              </div> 
+  //         </div>
+  //         `
 
-         memberCount++;
-        return famAddBlock;}
+  //        memberCount++;
+  //       return famAddBlock;}
 
-function addFam(){
-  $( "#addMember" ).on( "click", function() {
-    let familyMemberBlock = generateFamilyMemberBlock();
-    $('.memContainer').append(familyMemberBlock);
-} );
-}
+
+  var members = [];
+
+  $(document).ready(function () {
+            // Array to store members
+           
+           
+
+            // Event listener for Add Member button
+            $("#addMember").on("click", function () {
+                // Get input values
+               
+                
+                var memberName = $('[name="member"]').val();
+                var memberAge = $('[name="edad"]').val();
+                var birthdate = $('[name="kapanganakan"]').val();
+                var edad = $('[name="edad"]').val();
+                var disability = $('[name="kapansanan"]').val();
+                var gender = $('[name="kasarian"]').val();
+              
+                    // Add member to the array
+                    members.push({
+                        name: memberName,
+                        age: memberAge,
+                        birthdate: birthdate,
+                        edad: edad,
+                        disability: disability,
+                        gender: gender,
+                    
+                    });
+
+                    // Display members
+                    displayMembers();
+
+                    // Reset input fields
+                    $('.form')[0].reset();
+                 
+                // else {
+                //     alert("Please fill in all required fields.");
+                // }
+            });
+
+            // Function to display members
+            function displayMembers() {
+                // Clear previous member list
+                $("#memberList").empty();
+
+                // Loop through members and display them
+                $.each(members, function (i, member) {
+                  $("tbody").append(`
+                    <tr>
+                      <td>${member.name}</td>
+                      <td>${member.age}</td>
+                      <td>${member.birthdate}</td>
+                      <td>${member.disability}</td>
+                      <td>${member.gender}</td>
+                    </tr>
+                 `);
+    });
+            }
+        });
+
+
+
+  
+
 
   document.querySelector('#submit4').onclick = function(e){
     e.preventDefault();
@@ -248,12 +363,14 @@ function addFam(){
 
   }
 
+
+
   async function nextPage3() {
 
 
     let familyMembers = [];
 
-$('.family-member').each(function() {
+    $('.family-member').each(function() {
     let memberData = {
         "member": $(this).find('[name="member"]').val(),
         "kapanganakan": $(this).find('[name="kapanganakan"]').val(),
@@ -266,17 +383,12 @@ $('.family-member').each(function() {
     familyMembers.push(memberData);
 });
 
-console.log(familyMembers);
 
-
-
-
-    
     const { data, error } = await database
       .from('kalusuganPWD')
       .insert([
         {
-          Family_members: familyMembers,
+          Family_members: members,
           user_id: userId
         }
        

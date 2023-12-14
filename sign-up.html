@@ -128,10 +128,10 @@
                           <div class="select-box w-100">
                             <select id="sitio" class="w-100 p-md-3">
                               <option hidden></option>
-                              <option value="1">Sitio 1</option>
-                              <option value="2">Sitio 2</option>
-                              <option value="3">Sitio 3</option>
-                              <option value="4">Sitio 4</option>
+                              <option value="Sitio 1">Sitio 1</option>
+                              <option value="Sitio 2">Sitio 2</option>
+                              <option value="Sitio 3">Sitio 3</option>
+                              <option value="Sitio 4">Sitio 4</option>
                             </select>
                             <label class="form-label" for="sitio">Sitio</label>
                           </div>
@@ -442,9 +442,10 @@
       let middlename = document.getElementById("middlename").value;
       let birthday = document.getElementById("birthdate").value;
       let sitio = document.getElementById("sitio").value;
-      let email = document.getElementById("email").value;
       let phoneNum = document.getElementById("phonenum").value;
       let emerNum = document.getElementById("enumber").value;
+      let houseNum = document.getElementById("housenum").value;
+      let address = document.getElementById("address").value;
 
 
       var res = document.getElementById("resStat");
@@ -457,23 +458,35 @@
       var civilOptions = civil.options;
       var civilStatus = civilOptions[civilSelectedIndex].value;
 
+      var pass = document.getElementById('pass').value;
+      var confirmPass = document.getElementById('cpass').value;
+      var checkbox = document.querySelector('[type="checkbox"]:checked');
+       
+      if (pass !== confirmPass) {
+            alert('Passwords do not match');
+            return false;
+          }
+      if(!checkbox){
+            alert('Please check Terms and Conditions');
+            return false;
+      }
+       
       let { data, error } = await database
         .from('testing')
         .insert([
           {
-            username: username,
             password: password,
             lastname: lastname,
             firstname: firstname,
             middlename: middlename,
             birthDate: birthday,
             sitio: sitio,
-            purok: purok,
-            email: email,
             phoneNum: phoneNum,
             emergencyNum: emerNum,
             residentStatus: resStatus,
             civilStatus: civilStatus,
+            houseNum: houseNum,
+            address: address,
             role: 2,
           },
       ]).select('*');
@@ -489,7 +502,7 @@
             page : 'registration',
           },
         ]);
-      }
+      } console.log(data);
       window.location.href = 'get-started.html'
     }
   </script>

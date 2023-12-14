@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member List</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <h2>Member List</h2>
+    <form id="memberForm">
+        <label for="memberName">Member Name:</label>
+        <input type="text" name="memberName" required>
+        <br>
+        <label for="memberAge">Member Age:</label>
+        <input type="number" name="memberAge" required>
+        <br>
+        <label for="memberBirthdate">Birthdate:</label>
+        <input type="date" name="kapanganakan" required>
+        <br>
+        <label for="memberAge">Edad:</label>
+        <input type="number" name="edad" required>
+        <br>
+        <label for="memberDisability">Kapansanan:</label>
+        <input type="text" name="kapansanan" required>
+        <br>
+        <label for="memberGender">Kasarian:</label>
+        <select name="kasarian" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <br>
+        <label for="memberActivity">Ginagawa:</label>
+        <input type="text" name="nasagawa" required>
+        <br>
+        <button type="button" id="addMember">Add Member</button>
+    </form>
+
+    <div id="memberList">
+        <!-- Member details will be displayed here -->
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Array to store members
+            var members = [];
+
+            // Event listener for Add Member button
+            $("#addMember").on("click", function () {
+                // Get input values
+                var memberName = $('[name="memberName"]').val();
+                var memberAge = $('[name="memberAge"]').val();
+                var birthdate = $('[name="kapanganakan"]').val();
+                var edad = $('[name="edad"]').val();
+                var disability = $('[name="kapansanan"]').val();
+                var gender = $('[name="kasarian"]').val();
+                var activity = $('[name="nasagawa"]').val();
+
+                if (memberName !== "" && memberAge !== "" && birthdate !== "" && edad !== "" && disability !== "" && gender !== "" && activity !== "") {
+                    // Add member to the array
+                    members.push({
+                        name: memberName,
+                        age: memberAge,
+                        birthdate: birthdate,
+                        edad: edad,
+                        disability: disability,
+                        gender: gender,
+                        activity: activity
+                    });
+
+                    // Display members
+                    displayMembers();
+
+                    // Reset input fields
+                    $('#memberForm')[0].reset();
+                } 
+                // else {
+                //     alert("Please fill in all required fields.");
+                // }
+            });
+
+            // Function to display members
+            function displayMembers() {
+                // Clear previous member list
+                $("#memberList").empty();
+
+                // Loop through members and display them
+                for (var i = 0; i < 99; i++) {
+                    $("#memberList").append("<p>Name: " + members[i].name + ", Age: " + members[i].age + ", Birthdate: " + members[i].birthdate +
+                        ", Edad: " + members[i].edad + ", Disability: " + members[i].disability + ", Gender: " + members[i].gender +
+                        ", Activity: " + members[i].activity + "</p>");
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

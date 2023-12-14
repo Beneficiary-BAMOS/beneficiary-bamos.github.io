@@ -19,17 +19,15 @@
     <header>BAMOS FAMILY REGISTRATION FORM <br>
       <h6>BARANGAY BAHAY PARE FAMILY PROFILE</h6>
     </header>
-    <form class="form" >
+    <form class="form">
       <div class="input-box">
         <label>Name</label>
         <input type="text" id="fullname" placeholder="Enter your full name" value="" />
       </div>
-
       <div class="input-box">
         <label>Address</label>
         <input type="text" id="completeAdd" placeholder="Enter your full address" />
       </div>
-
       <div class="column">
         <div class="input-box">
           <label>Family Relationship</label>
@@ -51,218 +49,182 @@
             <option value="Cousin">Cousin</option>
           </select>
         </div>
-
         <div class="input-box">
           <label>House number</label>
-          <input type="number" placeholder="Enter house number" id="houseNum"  />
+          <input type="number" placeholder="Enter house number" id="houseNum" />
         </div>
         <div class="input-box">
           <label>Birth Date</label>
-          <input type="date" placeholder="Enter birth date" id="birthD"  />
+          <input type="date" placeholder="Enter birth date" id="birthD" />
         </div>
-        
-        
       </div>
-        
       </div>
-      
-      <div class="gender-box">
-        <h3>Gender</h3>
-        <div class="gender-option">
-          <div class="gender">
-            <input type="radio" id="check-male" name="gender" value="Male" />
-            <label for="check-male">Male &emsp;&emsp;</label>
-            <input type="radio" id="check-female" name="gender" value="Female" />
-            <label for="check-female">Female &emsp;&emsp;</label>
-            <input type="radio" id="check-other" name="gender" value="Prefer_not_to_say" />
-            <label for="check-other">Prefer not to say</label>
-          </div>
-        </div>
-        
-      </div>
-
-      <div class="input-box">
-          <div class="checkbox">
-           
-            <label> <input type="checkbox" value="isEmployee" name="isEmployee" style="right: 450px; "> Employed</label>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="select-box">
-            <select id="sitio">
-              <option hidden>Sitio</option>
-              <option value="1">Sitio 1</option>
-              <option value="2">Sitio 2</option>
-              <option value="3">Sitio 3</option>
-              <option value="4">Sitio 4</option>
-            </select>
-          </div>
-        </div>
-  
-       
-      
-        <button type="button" id="addMember" class="m-auto" style="width: 20%;">Add Family Member</button>
-        <!-- <div class="input-box member">
-          <label>Family member 1</label>
-          <input type="text" placeholder="Member" name="member1" />
-          <div class="column">
-            <input type="date" placeholder="Date of birth" name="bday1" />
-            <input type="number" placeholder="Age" name="age1" />
-            <select name="relation1" class="select-box">
-              <option hidden>Member Relation</option>
-              <option value="GrandMother">GrandMother</option>
-              <option value="GrandFather">GrandFather</option>
-              <option value="Mother">Mother</option>
-              <option value="Father">Father</option>
-              <option value="Husband">Husband</option>
-              <option value="Wife">Wife</option>
-              <option value="Son">Son</option>
-              <option value="Daughter">Daughter</option>
-              <option value="Uncle">Uncle</option>
-              <option value="Auntie">Auntie</option>
-              <option value="Nephew">Nephew</option>
-              <option value="Niece">Niece</option>
-              <option value="Grandchild">Grandchild</option>
-              <option value="Cousin">Cousin</option>
-            </select>
-            <div class="select-box">
-              <select name="civilStat1">
-                <option hidden>Civil Status</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Widowed">Widowed</option>
-              </select>
+      <div class="column radio-buttons">
+        <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" value="Male" />
+              <label for="check-male">Male &emsp;&emsp;</label>
+              <input type="radio" id="check-female" name="gender" value="Female" />
+              <label for="check-female">Female &emsp;&emsp;</label>
+              <input type="radio" id="check-other" name="gender" value="Prefer_not_to_say" />
+              <label for="check-other">Prefer not to say</label>
             </div>
+          </div>
+        </div>
+        <div class="employee-box">
+          <h3>Employment Status</h3>
+          <div class="employee-option">
+            <div class="employee">
+              <input type="radio" id="employed" name="employment" value="employed" />
+              <label for="employed">Employed &emsp;&emsp;</label>
+              <input type="radio" id="unemployed" name="employment" value="unemployed" />
+              <label for="unemployed">Unemployed &emsp;&emsp;</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="input-box">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="isEmployee" name="isEmployee" style="right: 450px; "> Employed </label>
+        </div>
+      </div> -->
+      <div class="column">
+        <div class="select-box">
+          <select id="sitio">
+            <option hidden>Sitio</option>
+            <option value="1">Sitio 1</option>
+            <option value="2">Sitio 2</option>
+            <option value="3">Sitio 3</option>
+            <option value="4">Sitio 4</option>
+          </select>
+        </div>
+      </div>
+      <br><br><br>
+      <div class="input-box member family-member ">
+        <label>Family member </label>
+        <input type="text" placeholder="Member" name="member" />
+        <div class="column">
+          <input type="date" placeholder="Date of birth" name="bday" />
+          <input type="number" placeholder="Age" name="age" />
+          <select name="relation" class="select-box">
+            <option hidden>Member Relation</option>
+            <option value="GrandMother">GrandMother</option>
+            <option value="GrandFather">GrandFather</option>
+            <option value="Mother">Mother</option>
+            <option value="Father">Father</option>
+            <option value="Husband">Husband</option>
+            <option value="Wife">Wife</option>
+            <option value="Son">Son</option>
+            <option value="Daughter">Daughter</option>
+            <option value="Uncle">Uncle</option>
+            <option value="Auntie">Auntie</option>
+            <option value="Nephew">Nephew</option>
+            <option value="Niece">Niece</option>
+            <option value="Grandchild">Grandchild</option>
+            <option value="Cousin">Cousin</option>
+          </select>
+          <div class="select-box">
+            <select name="civilStat">
+              <option hidden>Civil Status</option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Widowed">Widowed</option>
+            </select>
+          </div>
+        </div>
+        <div class="column">
+          <input type="text" placeholder="Religion" name="religion" />
+          <select name="edAttain" class="select-box">
+            <option hidden>Educational Attainment</option>
+            <option value="Elementary">Elementary</option>
+            <option value="JuniorHigh">JuniorHigh</option>
+            <option value="SeniorHigh">SeniorHigh</option>
+            <option value="College">College</option>
+          </select>
+          <input type="text" placeholder="Source of income/Work" name="sourceIncome" />
+          <div class="select-box">
+            <select name="genderPick">
+              <option hidden>Gender</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Prefer_not_to_say">Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+        <div class="column">
+          <input type="number" placeholder="Years of staying in the area" name="stay" />
+          <input type="text" placeholder="Philhealth(optional)" name="philId" />
+          <div class="select-box">
+            <select name="incomePick">
+              <option hidden>Monthly income</option>
+              <option value="5k-10k">5k-10k</option>
+              <option value="15k-25k">15k-25k</option>
+              <option value="30k+">30k+</option>
+            </select>
           </div>
           
-          <div class="column">
-            <input type="text" placeholder="Religion" name="religion1" />
-            <select name="edAttain1" class="select-box">
-              <option hidden>Educational Attainment</option>
-              <option value="Elementary">Elementary</option>
-              <option value="JuniorHigh">JuniorHigh</option>
-              <option value="SeniorHigh">SeniorHigh</option>
-              <option value="College">College</option>
-            </select>
-            <input type="text" placeholder="Source of income/Work" name="sourceIncome1" />
-            <div class="select-box">
-              <select name="genderPick1">
-                <option hidden>Gender</option>
-                <option value="Female">Female</option>
-                <option value="Male">Male</option>
-                <option value="Prefer_not_to_say">Prefer not to say</option>
-              </select>
-            </div>
-          </div>
-          <div class="column">
-            <input type="number" placeholder="Years of staying in the area" name="stay1" />
-            <input type="text" placeholder="Philhealth(optional)" name="philId1" />
-            <div class="select-box">
-              <select name="incomePick1">
-                <option hidden>Monthly income</option>
-                <option value="5k-10k">5k-10k</option>
-                <option value="15k-25k">15k-25k</option>
-                <option value="30k+">30k+</option>
-              </select>
-              
-            </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="isEmployee" name="isEmployee1"> Employed</label>
-            </div>
-          </div>  -->
-        <div class="memContainer"></div>
-        
-      
-      
-      
-         
-          <br>
-          <br>
-          <!-- <div class="input-box member">
-            <label>Family members</label>
-            <input type="text" placeholder="Member 3" id="member3" />
-            <div class="column">
-              <input type="date" placeholder="Date of birth" id="bday3" />
-              <input type="number" placeholder="Age" id="age3" />
-              <select id="relation3" class="select-box">
-                <option hidden>Member Relation</option>
-                <option value="GrandMother">GrandMother</option>
-                <option value="GrandFather">GrandFather</option>
-                <option value="Mother">Mother</option>
-                <option value="Father">Father</option>
-                <option value="Husband">Husband</option>
-                <option value="Wife">Wife</option>
-                <option value="Son">Son</option>
-                <option value="Daughter">Daughter</option>
-                <option value="Uncle">Uncle</option>
-                <option value="Auntie">Auntie</option>
-                <option value="Nephew">Nephew</option>
-                <option value="Niece">Niece</option>
-                <option value="Grandchild">Grandchild</option>
-                <option value="Cousin">Cousin</option>
-              </select>
-              <div class="select-box">
-                <select id="civilStat3">
-                  <option hidden>Civil Status</option>
-                  <option value="Single">Single</option>
-                  <option value="Married">Married</option>
-                  <option value="Widowed">Widowed</option>
-                </select>
+        </div>
+        <div class="column">
+          <div class="add-employee-box">
+            <h3>Employment Status</h3>
+            <div class="add-employee-option">
+              <div class="add-employee">
+                <input type="radio" id="addEmployed" name="add-employment" value="Employed" />
+                <label for="addEmployed">Employed &emsp;&emsp;</label>
+                <input type="radio" id="addUnemployed" name="add-employment" value="Unemployed" />
+                <label for="addUnemployed">Unemployed &emsp;&emsp;</label>
               </div>
             </div>
-            <div class="column">
-              <input type="text" placeholder="Religion" id="religion3" />
-              <select id="edAttain3" class="select-box">
-                <option hidden>Educational Attainment</option>
-                <option value="Elementary">Elementary</option>
-                <option value="JuniorHigh">JuniorHigh</option>
-                <option value="SeniorHigh">SeniorHigh</option>
-                <option value="College">College</option>
-              </select>
-              <input type="text" placeholder="Source of income/Work" id="sourceIncome3" />
-              <div class="select-box">
-                <select id="genderPick3">
-                  <option hidden>Gender</option>
-                  <option value="Female">Female</option>
-                  <option value="Male">Male</option>
-                  <option value="Prefer_not_to_say">Prefer not to say</option>
-                </select>
-              </div>
-            </div>
-            <div class="column">
-              <input type="number" placeholder="Years of staying in the area" id="stay3" />
-              <input type="text" placeholder="Philhealth(optional)" id="philId3" />
-              <div class="select-box">
-                <select id="incomePick3">
-                  <option hidden>Monthly income</option>
-                  <option value="5k-10k">5k-10k</option>
-                  <option value="15k-25k">15k-25k</option>
-                  <option value="30k+">30k+</option>
-                </select>
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox" value="isEmployee" name="isEmployee4"> Employed</label>
-              </div>
-            </div>
-            <br>
-            <br>
-            
-            <br>
-          </div> -->
-          <div>
-           
           </div>
         </div>
+        <button type="button" id="addMember" class="m-auto" style="width: 20%;">Add Family Member</button>
+       
+        <div class="memContainer"></div>
+
+        
+
+        <br>
+        <br>
+
+        <div></div>
+      </div>
       </div>
 
+
+      <div id="memberlist"></div>
+
+      <div class="addform" style="overflow: scroll;">
+        <table style="overflow: scroll;">
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Birthday</th>
+              <th>Age</th>
+              <th>Member Relation</th>
+              <th>Civil Status</th>
+              <th>Religion</th>
+              <th>Educational Attainment</th>
+              <th>Source of income/Work</th>
+              <th>Gender</th>
+              <th>Years of staying in the area</th>
+              <th>Philhealth(optional)</th>
+              <th>Monthly income</th>
+              <th>Employment Status</th>
+              </tr>
+          </thead>
+          <tbody id="memberList">           
+          </tbody>
+          
+          </table>
+      </div>
       <div class="column">
-        <input type="hidden" id="requiredForm" value="0" /> 
+        <input type="hidden" id="requiredForm" value="0" />
         <button type="button" class="clear">Clear Form</button>
         <button type="submit" id="submit">Next</button>
       </div>
-
-     
     </form>
   </section>
   <script src="form-global.js"></script>
@@ -286,7 +248,25 @@
     justify-content: center;
     padding: 20px;
     background: linear-gradient(to bottom, #b3b6b6, #A7D397);
+    overflow: scroll;
   }
+
+  table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 2000px;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 
   .container {
     position: relative;
@@ -334,13 +314,16 @@
   .input-box input:focus {
     /* box-shadow: 0 1px 0 #120d0d; */
   }
+  .radio-buttons{
+    justify-content: space-between;
+  }
 
   .form .column {
     display: flex;
     column-gap: 15px;
   }
 
-  .form .gender-box {
+  .form .gender-box, .form .employee-box, .form .add-employee-box {
     margin-top: 20px;
   }
 
@@ -353,35 +336,46 @@
     font-size: 1.2rem;
   }
 
-  .gender-box h3 {
+  .gender-box h3,   .employee-box h3, .add-employee-box h3 {
     color: #120d0d;
     font-size: 1.1rem;
     font-weight: 400;
     margin-bottom: 8px;
   }
 
-  .form :where(.gender-option, .gender) {
+  .form :where(.gender-option, .gender), .form :where(.employee-option, .employee), .form :where(.add-employee-option, .add-employee){
     display: flex;
     align-items: center;
     column-gap: 50px;
     flex-wrap: wrap;
   }
 
-  .form .gender {
+  .form .gender,  .form .employee, .form .employee {
     column-gap: 5px;
   }
 
-  .gender input {
+  .gender input, .employee input, .add-employee input {
     accent-color: #A7D397;
   }
 
-  .form :where(.gender input, .gender label) {
+  .form :where(.gender input, .gender label), .form :where(.employee input, .employee label), .form :where(.add-employee input, .add-employee label) {
     cursor: pointer;
   }
+  
 
-  .gender label {
+  .gender label, .employee label, .add-employee label{
     color: #707070;
   }
+
+  .add-employee input {
+    width: 15px;
+}
+.add-employee{
+  column-gap: 5px;
+}
+.add-employee label {
+    padding-top: 8px;
+}
 
   .address :where(input, .select-box) {
     margin-top: 15px;
@@ -430,106 +424,101 @@
 <script type="text/javascript">
   // Import the Supabase client
 
+  var members = [];
 
-  addFam();
+$(document).ready(function () {
+            // Array to store members
+           
 
-  let memberCount = 1;
+            // Event listener for Add Member button
+            $("#addMember").on("click", function () {
+                // Get input values
+                var memberName = $('[name="member"]').val();
+                var birthdate = $('[name="bday"]').val();
+                var memberAge = $('[name="age"]').val();
+                var relation = $('[name="relation"]').val();
+                var civilStatus = $('[name="civilStat"]').val();
+                var religion = $('[name="religion"]').val();
+                var educationAttainment = $('[name="edAttain"]').val();
+                var sourceOfIncome = $('[name="sourceIncome"]').val();
+                var gender = $('[name="genderPick"]').val();
+                var stayDuration = $('[name="stay"]').val();
+                var philippineID = $('[name="philId"]').val();
+                var incomeSource = $('[name="incomePick"]').val();
+                var additionalEmployment = $('[name="add-employment"]:checked').val();
 
-  function generateFamilyMemberBlock() {
-        let famAddBlock = `
+                 // Add member to the array
+                members.push({
+                name: memberName,
+                birthdate: birthdate,
+                age: memberAge,
+                relation: relation,
+                civilStatus: civilStatus,
+                religion: religion,
+                educationAttainment: educationAttainment,
+                sourceOfIncome: sourceOfIncome,
+                gender: gender,
+                stayDuration: stayDuration,
+                philippineID: philippineID,
+                incomeSource: incomeSource,
+                additionalEmployment: additionalEmployment
+                    
+                    });
+
+                    // Display members
+                    displayMembers();
+
+                    // Reset input fields
+                    $('.family-member input[type="text"]').val("");
+                    $('.family-member select').prop('selectedIndex',0);
+
+                
+                // else {
+                //     alert("Please fill in all required fields.");
+                // }
+            });
+
+
+            function displayMembers() {
+        // Clear previous member list
+        $("#memberList").html("");
       
-        <!-- Container -->
+         // Function to display members
+         $.each(members, function (i, member) {
+            $("#memberList").append(`<tr>
+            <td>${member.name}</td>
+            <td>${member.age}</td>
+            <td>${member.birthdate}</td>
+            <td>${member.relation}</td>
+            <td>${member.civilStatus}</td>
+            <td>${member.religion}</td>
+            <td>${member.educationAttainment}</td>
+            <td>${member.sourceOfIncome}</td>
+            <td>${member.gender}</td>
+            <td>${member.stayDuration}</td>
+            <td>${member.philippineID}</td>
+            <td>${member.incomeSource}</td>
+            <td>${member.additionalEmployment}</td>
+            </tr>`
+
+            );
+        });
       
-        <div class="input-box member family-member ">   
+      }
 
-                                              <label>Family member </label>
-                                              <input type="text" placeholder="Member" name="member" />
-                            <div class="column">
-                                              <input type="date" placeholder="Date of birth" name="bday" />
-                                              <input type="number" placeholder="Age" name="age" />
-                                              <select name="relation" class="select-box">
-                                                <option hidden>Member Relation</option>
-                                                <option value="GrandMother">GrandMother</option>
-                                                <option value="GrandFather">GrandFather</option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Father">Father</option>
-                                                <option value="Husband">Husband</option>
-                                                <option value="Wife">Wife</option>
-                                                <option value="Son">Son</option>
-                                                <option value="Daughter">Daughter</option>
-                                                <option value="Uncle">Uncle</option>
-                                                <option value="Auntie">Auntie</option>
-                                                <option value="Nephew">Nephew</option>
-                                                <option value="Niece">Niece</option>
-                                                <option value="Grandchild">Grandchild</option>
-                                                <option value="Cousin">Cousin</option>
-                                              </select>
-                                        <div class="select-box">
-                                                      <select name="civilStat">
-                                                        <option hidden>Civil Status</option>
-                                                        <option value="Single">Single</option>
-                                                        <option value="Married">Married</option>
-                                                        <option value="Widowed">Widowed</option>
-                                                      </select>
-                                        </div>
-                         </div>
-        
-                      <div class="column">
-                            <input type="text" placeholder="Religion" name="religion" />
-                            <select name="edAttain" class="select-box">
-                              <option hidden>Educational Attainment</option>
-                              <option value="Elementary">Elementary</option>
-                              <option value="JuniorHigh">JuniorHigh</option>
-                              <option value="SeniorHigh">SeniorHigh</option>
-                              <option value="College">College</option>
-                            </select>
-                            <input type="text" placeholder="Source of income/Work" name="sourceIncome" />
-                            <div class="select-box">
-                              <select name="genderPick">
-                                <option hidden>Gender</option>
-                                <option value="Female">Female</option>
-                                <option value="Male">Male</option>
-                                <option value="Prefer_not_to_say">Prefer not to say</option>
-                              </select>
-                            </div>
-                      </div>
-                      
-                      <div class="column">
-                              <input type="number" placeholder="Years of staying in the area" name="stay" />
-                              <input type="text" placeholder="Philhealth(optional)" name="philId" />
-                            <div class="select-box">
-                              <select name="incomePick">
-                                <option hidden>Monthly income</option>
-                                <option value="5k-10k">5k-10k</option>
-                                <option value="15k-25k">15k-25k</option>
-                                <option value="30k+">30k+</option>
-                              </select>
-                            </div>
-                          <div class="checkbox">
-                            <label><input type="checkbox" value="isEmployee" name="isEmployee"> Employed</label>
-                          </div>
-               </div> 
-       
-            `;
-        memberCount++;
-        return famAddBlock;}
-
-  
-function addFam(){
-  $( "#addMember" ).on( "click", function() {
-  
-    let familyMemberBlock = generateFamilyMemberBlock();
-    $('.memContainer').append(familyMemberBlock);
-} );
-}
-
-
+      
+           
+        });
 
   loadData();
 
 
   function loadData() {
      $('#fullname').val(userData.lastname + ', ' +userData.firstname+' '+userData.middlename);
+     $('#completeAdd').val(userData.address);
+     $('#sitio').val(userData.sitio);
+     $('#houseNum').val(userData.phoneNum);
+     $('#birthD').val(userData.birthDate);
   }
 
   // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
@@ -659,17 +648,16 @@ function addFam(){
           bahayNumero: repHouse,
           isinilang: repBD,
           kasarian: gen,
-          Family_members: family1,
+          Family_members: JSON.parse(JSON.stringify(members)),
           user_id: userId,
           Sitio: sitio,
           Purok: purok,
           Employed: employee
 
-          
-          
         },
       ])
       console.log(data);
+     
       alert("Updated");
       window.location.href = 'registration-form2.html'
   }
