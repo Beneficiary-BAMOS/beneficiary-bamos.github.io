@@ -305,8 +305,8 @@
                 <div class="card-body">
                   <h4 class="card-title">Users Information</h4>
                   <div class="input-group">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                    <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
+                    <input type="search" class="form-control rounded searchText" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <button type="button" class="btn btn-outline-primary search" data-mdb-ripple-init>search</button>
                   </div>             
                   
                   <div class="table-responsive">
@@ -391,6 +391,7 @@
       var html = '';
       if(data.length > 0) {
         for(var x = 0; x < data.length; x++) {
+          var houseNum = data[x].houseNum;
           var status = data[x].is_active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Pending</span>';
           html += `
             <tr class="user-list-tr">
@@ -559,35 +560,17 @@
               var Pambarangay = null;
               var Pambayan = null;
               if(data[x].panlipunan.length > 0) {
-                
-                panlipunan = data[x].panlipunan[0];
-                if(JSON.parse(data[x].panlipunan[0].SamahangKinasaniban).length > 0) {
-                  for(var y = 0; y < JSON.parse(data[x].panlipunan[0].SamahangKinasaniban).length; y++) {
-                    if(JSON.parse(data[x].panlipunan[0].SamahangKinasaniban)[y]) {
-                      SamahangKinasaniban += data[x].panlipunan[0].SamahangKinasaniban[x] + ', ';
-                    }
-                  }
-                }
-                if(JSON.parse(data[x].panlipunan[0].Pambarangay).length > 0) {
-                  for(var y = 0; y < JSON.parse(data[x].panlipunan[0].Pambarangay).length; y++) {
-                    if(JSON.parse(data[x].panlipunan[0].Pambarangay)[y]) {
-                      Pambarangay += data[x].panlipunan[0].Pambarangay[y] + ', ';
-                    }
-                  }
-                }
-                if(JSON.parse(data[x].panlipunan[0].Pambayan).length > 0) {
-                  for(var y = 0; y < JSON.parse(data[x].panlipunan[0].Pambayan).length; y++) {
-                    console.log('JSON.parse(data[x].panlipunan[0].Pambayan)[y]', JSON.parse(data[x].panlipunan[0].Pambayan)[y]);
-                    if(JSON.parse(data[x].panlipunan[0].Pambayan)[y]) {
-                      Pambayan += data[x].panlipunan[0].Pambayan[y] + ', ';
-                    }
-                  }
-                }
+                SamahangKinasaniban = data[x].panlipunan[0].organisasyon1;
+              Katungkulan = data[x].panlipunan[0].katungkulan1;
+              Pambarangay = data[x].panlipunan[0].pambarangay;
+              Pambayan =data[x].panlipunan[0].pambayan;
               }
 
+              
          
               html += `
-                <p><strong>Samahang Kinasaniban:</strong> ${ SamahangKinasaniban ? SamahangKinasaniban : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                <p><strong>Samahang Organisasyon:</strong> ${ SamahangKinasaniban ? SamahangKinasaniban : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
+                <p><strong>Katungkulan:</strong> ${ Pambarangay ? Pambarangay : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                 <p><strong>Pambarangay:</strong> ${ Pambarangay ? Pambarangay : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                 <p><strong>Pambayan:</strong> ${ Pambayan ? Pambayan : '<a href="../../../../form-lp.html?user_id='+data[x].id+'">null</a>' }</p>
                 
@@ -611,6 +594,9 @@
                 <td class="status">
                   ${status}
                 </td>
+                <td class="status">
+                  ${houseNum}
+                </td>
                 
               </tr>
             `;
@@ -620,6 +606,28 @@
     }
 
     getData();
+
+    $('.search').click(function(e) {
+      e.preventDefault();
+
+      const searchQuery = $('.searchText').val().trim();
+
+      console.log(searchQuery);
+
+      $('.user-list-tr > td:first-child > a').each(function() {
+
+        if (searchQuery === '') {
+          $('.user-list-tr').show();
+        } else {
+          if ($(this).text().toLowerCase().includes(searchQuery.toLowerCase())) {
+            $(this).parents('.user-list-tr').show();
+          } else {
+            $(this).parents('.user-list-tr').hide();
+          }
+        }
+        
+      });
+    });
 
     $('html').on('click', '.activate', async function(e) {
       e.preventDefault();

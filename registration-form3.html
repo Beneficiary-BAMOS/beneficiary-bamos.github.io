@@ -267,9 +267,9 @@ $(document).ready(function () {
                 var memberName = $('[name="member"]').val();
                 var memberAge = $('[name="gulang"]').val();
                 var birthdate = $('[name="kapanganakan"]').val();
-                var edad = $('[name="timbang"]').val();
-                var disability = $('[name="imunisasyon"]').val();
-                var gender = $('[name="nasagawa"]').val();
+                var timbang = $('[name="timbang"]').val();
+                var imunisasyon = $('[name="imunisasyon"]').val();
+                var nasagawa = $('[name="nasagawa"]').val();
 
                 
 
@@ -278,9 +278,9 @@ $(document).ready(function () {
                         "name": memberName,
                         "age": memberAge,
                         "birthdate": birthdate,
-                        "edad": edad,
-                        "disability": disability,
-                        "gender": gender,
+                        "timbang": timbang,
+                        "imunisasyon": imunisasyon,
+                        "nasagawa": nasagawa,
 
                     });
 
@@ -307,11 +307,11 @@ $(document).ready(function () {
                   $("tbody").append(`
                     <tr>
                       <td>${member["name"]}</td>
-                      <td>${member["birthdate"]}</td>
                       <td>${member["age"]}</td>
-                      <td>${member["edad"]}</td>
-                      <td>${member["disability"]}</td>
-                      <td>${member["gender"]}</td>
+                      <td>${member["birthdate"]}</td>
+                      <td>${member["timbang"]}</td>
+                      <td>${member["imunisasyon"]}</td>
+                      <td>${member["nasagawa"]}</td>
                     </tr>
                     break;
                  `)}

@@ -578,7 +578,7 @@ $(document).ready(function () {
 
     let purok =  $('#purok').val();
     let sitio = $('#sitio').val();
-    let employee = $('[name="isEmployee"]:checked').val();
+    let employee = $('[name="isEmployee"]:checked').length ? "Employed" : "Unemployed";
 
     //Family Array 1
 

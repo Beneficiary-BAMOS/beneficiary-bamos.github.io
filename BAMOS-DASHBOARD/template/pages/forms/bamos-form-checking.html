@@ -385,10 +385,11 @@
         let middlename = document.getElementById("middlename").value;
         let birthday = document.getElementById("birthdate").value;
         let sitio = document.getElementById("sitio").value;
-        let purok = document.getElementById("purok").value;
-        let email = document.getElementById("email").value;
+        let $houseNum = document.getElementById("housenum").value;
+        //let email = document.getElementById("email").value;
         let phoneNum = document.getElementById("phonenum").value;
         let emerNum = document.getElementById("enumber").value;
+        let address = document.getElementById("address").value;
   
   
         var res = document.getElementById("resStat");
@@ -412,13 +413,16 @@
               middlename: middlename,
               birthDate: birthday,
               sitio: sitio,
-              purok: purok,
-              email: email,
+              //purok: purok,
+              //email: email,
+              houseNum: $houseNum,
+              //email: email,
               phoneNum: phoneNum,
               emergencyNum: emerNum,
               residentStatus: resStatus,
               civilStatus: civilStatus,
               role: rolee,
+              address: address
             },
         ]).select('*');
     
@@ -435,6 +439,13 @@
           ]);
         }
         alert('Successfully Registered!');
+        $('.card-registration-2 select').val(0);
+        $(`.card-registration-2 input[type="text"]:not(#address), 
+          .card-registration-2 input[type="date"],
+          .card-registration-2 input[type="password"],
+          .card-registration-2 input[type="number"]`).val('');
+        $('.card-registration-2 input[type="checkbox"]').prop('checked',false); 
+
       }
     </script>
 </body>

@@ -37,9 +37,10 @@ async function checkConnection() {
     $('#houseNum').val(eMiyembro.bahayNumero);
     $('#birthD').val(eMiyembro.isinilang);
     $(`.member-gender-box [value="${eMiyembro.kasarian}"]`).prop('checked',true);
-    $(`input[name="isEmployee"][value="${eMiyembro.Employed}"]`).prop('checked',true);
+    $(`input[name="isEmployee"][value="${eMiyembro.Employed.toLowerCase()}"]`).prop('checked',true);
     $('#sitio').val(parseInt(eMiyembro.Sitio));
     $('#purok').val(parseInt(eMiyembro.Purok));
+   
 
     eMiyembro.Family_members.forEach((member,key) => {
         let famAddBlock = `
@@ -270,7 +271,8 @@ async function nextPage2() {
     sinoka: $('#relations').val(),
     bahayNumero: $('#houseNum').val(),
     kasarian: $('[name="gender"]:checked').val(),
-    Family_members:new Array
+    Family_members:new Array,
+    Employed: $('[name="isEmployee"]:checked').length ? "employed" : "unemployed"
   };
     
 
@@ -324,7 +326,7 @@ async function nextPage2() {
         age: $(`[name="ngulang${$i}"]`).val(),
         timbang: $(`[name="ntimbang${$i}"]`).val(),
         imunisasyon: $(`[name="nimunisasyon${$i}"]`).val(),
-        nagsagawa: $(`[name="nnasagawa${$i}"]`).val()
+        nasagawa: $(`[name="nnasagawa${$i}"]`).val()
       })
     }
 

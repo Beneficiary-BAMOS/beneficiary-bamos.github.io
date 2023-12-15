@@ -407,16 +407,104 @@
                 </div>
               </div>
             </div>
-            <!-- div class="col-lg-6 grid-margin stretch-card">
+            <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Bahay na Tinitirhan</h4>
                   <canvas id="lineChart4"></canvas>
                 </div>
               </div>
-            </div -->
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Lupang sakahan/pinagyayaman
+                    <!-- select id="bata-pwd">
+                      <option value="bata">Bata</option>
+                      <option value="pwd">PWD</option>
+                    </select -->
+                  </h4>
+                  <canvas id="lineChart5"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Pinagkukunan ng Tubig</h4>
+                  <canvas id="lineChart6"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Pinagmumulan ng Elektrisidad
+                    <!-- select id="bata-pwd">
+                      <option value="bata">Bata</option>
+                      <option value="pwd">PWD</option>
+                    </select -->
+                  </h4>
+                  <canvas id="lineChart7"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Uri ng Sasakyan</h4>
+                  <canvas id="lineChart8"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Pang komersyo
+                    <!-- select id="bata-pwd">
+                      <option value="bata">Bata</option>
+                      <option value="pwd">PWD</option>
+                    </select -->
+                  </h4>
+                  <canvas id="lineChart9"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Uri ng palikuran</h4>
+                  <canvas id="lineChart10"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card gender-chart">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    Gender &nbsp;&nbsp;&nbsp;&nbsp;
+                  </h4>
+                  <canvas id="barChart69" class="graph69"></canvas>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        
+      
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
@@ -556,7 +644,7 @@
       getDataBarChart1(value);
     });
 
-    
+
     function barChart1(data, options) {
       if ($("#barChart1").length) {
         var barChartCanvas = $("#barChart1").get(0).getContext("2d");
@@ -569,6 +657,98 @@
         });
       }
     }
+
+    async function getDataBarChart69(isEmployed = 1) {
+      var data = [];
+
+      
+
+      if (localStorage.getItem('sitio') === undefined) {
+        var { data, error } = await database.from('testing').select(`
+          *,
+          miyembro ( kasarian, Employed )
+        `).eq('role', 2);
+      } else {
+        var { data, error } = await database.from('testing').select(`
+          *,
+          miyembro ( kasarian, Employed )
+        `).eq('sitio', localStorage.getItem('sitio'));
+      }
+
+      console.log(data);
+
+      var barData = [];
+      barData['Male'] = 0;
+      barData['Female'] = 0;
+      barData['Prefer_not_to_say'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+        if(data[x].miyembro.length > 0) {
+            for(var y = 0; y < data[x].miyembro.length; y++) {
+              var isEmployee = data[x].miyembro[y].Employed;
+              var gender = data[x].miyembro[y].kasarian;
+              
+                barData[gender] = barData[gender] + 1;
+            }
+        }
+      }
+
+      var barChartData = {
+        labels: ["Male", "Female", "Prefer not to say"],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData['Male'], barData['Female'], barData['Prefer_not_to_say']],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      barChart69(barChartData, options);
+    }
+
+    getDataBarChart69();
+
+    function barChart69(data, options) {
+      if ($("#barChart69").length) {
+        var barChartCanvas = $("#barChart69").get(0).getContext("2d");
+        if(window.bar69 != undefined)
+        window.bar69.destroy();
+        window.bar69 = new Chart(barChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+
+    
 
     async function getDataBarChart2() {
       var data = [];
@@ -734,11 +914,19 @@
       var value = $(this).val();
       localStorage.setItem('sitio',value);
       getDataBarChart1();
+      getDataBarChart69();
       getDataBarChart2();
       getDataBarChart3();
       getDataLineChart();
       getDataLineChart2();
       getDataLineChart3();
+      getDataLineChart4();
+      getDataLineChart5();
+      getDataLineChart6();
+      getDataLineChart7();
+      getDataLineChart8();
+      getDataLineChart9();
+      getDataLineChart10();
       bataPWD();
     });
 
@@ -1000,6 +1188,584 @@
     }
 
 
+    async function getDataLineChart4() {
+      var data = [];
+
+      if (localStorage.getItem('sitio') === undefined) {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('role', 2);
+      } else {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('sitio', localStorage.getItem('sitio'));
+      }
+
+      var barData = [];
+      barData['Pag-aari'] = 0;
+      barData['Inuupahan'] = 0;
+      barData['Iba_Pa'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+        var Family_members = data[x].pangkabuhayan;
+        for(var y = 0; y < data[x].pangkabuhayan.length; y++) {
+            family_mem = Family_members[y].BahaynaTinitirhan;
+            barData[family_mem] += 1;
+        }
+      }
+
+      var lineChartData = {
+        labels: ['pag aari','inuupahan','iba pa'],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData['Pag-aari'],barData['Inuupahan'],barData['Iba_Pa']],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      lineChart4(lineChartData, options);
+    }
+
+    getDataLineChart4();
+
+    function lineChart4(data, options) {
+      if ($("#lineChart4").length) {
+        var lineChartCanvas = $("#lineChart4").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        if(window.bar8 != undefined)
+        window.bar8.destroy();
+        window.bar8 = new Chart(lineChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+
+
+    async function getDataLineChart5() {
+      var data = [];
+
+      if (localStorage.getItem('sitio') === undefined) {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('role', 2);
+      } else {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('sitio', localStorage.getItem('sitio'));
+      }
+
+      var barData = [];
+      barData['Pag-aari'] = 0;
+      barData['Inuupahan'] = 0;
+      barData['Iba_Pa'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+        var Family_members = data[x].pangkabuhayan;
+        for(var y = 0; y < data[x].pangkabuhayan.length; y++) {
+            family_mem = Family_members[y].LupangSakahanPinagyayaman;
+            barData[family_mem] += 1;
+        }
+      }
+
+      var lineChartData = {
+        labels: ['pag aari','inuupahan','iba pa'],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData['Pag-aari'],barData['Inuupahan'],barData['Iba_Pa']],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      lineChart5(lineChartData, options);
+    }
+
+    getDataLineChart5();
+
+    function lineChart5(data, options) {
+      if ($("#lineChart5").length) {
+        var lineChartCanvas = $("#lineChart5").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        if(window.bar9 != undefined)
+        window.bar9.destroy();
+        window.bar9 = new Chart(lineChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+
+
+    async function getDataLineChart6() {
+      var data = [];
+
+      if (localStorage.getItem('sitio') === undefined) {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('role', 2);
+      } else {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('sitio', localStorage.getItem('sitio'));
+      }
+
+      var barData = [];
+      barData['Poso Artesiano'] = 0;
+      barData['NAWASA'] = 0;
+      barData['Balon'] = 0;
+      barData['Iba_Pa'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+        var Family_members = data[x].pangkabuhayan;
+        for(var y = 0; y < data[x].pangkabuhayan.length; y++) {
+            family_mem = Family_members[y].PinagkukunanngTubig;
+            barData[family_mem] += 1;
+        }
+      }
+
+      var lineChartData = {
+        labels: ['poso','nawasa','balon','iba pa'],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData['Poso Artesiano'],barData['NAWASA'],barData['Balon'],barData['Iba_Pa']],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      lineChart6(lineChartData, options);
+    }
+
+    getDataLineChart6();
+
+    function lineChart6(data, options) {
+      if ($("#lineChart6").length) {
+        var lineChartCanvas = $("#lineChart6").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        if(window.bar10 != undefined)
+        window.bar10.destroy();
+        window.bar10 = new Chart(lineChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+
+    async function getDataLineChart7() {
+      var data = [];
+
+      if (localStorage.getItem('sitio') === undefined) {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('role', 2);
+      } else {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('sitio', localStorage.getItem('sitio'));
+      }
+
+      var barData = [];
+      barData['Kuryente'] = 0;
+      barData['Gaas'] = 0;
+      barData['Iba_Pa'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+        var Family_members = data[x].pangkabuhayan;
+        for(var y = 0; y < data[x].pangkabuhayan.length; y++) {
+            family_mem = Family_members[y].PinagmumulanngElektrisidad;
+            barData[family_mem] += 1;
+        }
+      }
+
+      var lineChartData = {
+        labels: ['kuryente','gaas','iba pa'],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData['Kuryente'],barData['Gaas'],barData['Iba_Pa']],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      lineChart7(lineChartData, options);
+    }
+
+    getDataLineChart7();
+
+    function lineChart7(data, options) {
+      if ($("#lineChart7").length) {
+        var lineChartCanvas = $("#lineChart7").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        if(window.bar11 != undefined)
+        window.bar11.destroy();
+        window.bar11 = new Chart(lineChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+
+
+    async function getDataLineChart8() {
+      var data = [];
+
+      if (localStorage.getItem('sitio') === undefined) {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('role', 2);
+      } else {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('sitio', localStorage.getItem('sitio'));
+      }
+
+      var barData = [];
+      barData['Kotse'] = 0;
+      barData['Jeep'] = 0;
+      barData['Motorsiklo'] = 0;
+      barData['Van'] = 0;
+      barData['Truck'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+        var Family_members = data[x].pangkabuhayan;
+        for(var y = 0; y < data[x].pangkabuhayan.length; y++) {
+            family_mem = Family_members[y].sasakyan;
+            barData[family_mem] += 1;
+        }
+      }
+
+      var lineChartData = {
+        labels: ['kotse','jeep','motorsiklo','van','truck'],
+        datasets: [{
+          label: '# of Votes',
+          data: [
+            barData['Kotse'],
+            barData['Jeep'],
+            barData['Motorsiklo'],
+            barData['Van'],
+            barData['Truck']
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      lineChart8(lineChartData, options);
+    }
+
+    getDataLineChart8();
+
+    function lineChart8(data, options) {
+      if ($("#lineChart8").length) {
+        var lineChartCanvas = $("#lineChart8").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        if(window.bar12 != undefined)
+        window.bar12.destroy();
+        window.bar12 = new Chart(lineChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+
+    async function getDataLineChart9() {
+      var data = [];
+
+      if (localStorage.getItem('sitio') === undefined) {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('role', 2);
+      } else {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('sitio', localStorage.getItem('sitio'));
+      }
+
+      var barData = [];
+      barData['Babuyan'] = 0;
+      barData['Manukan'] = 0;
+      barData['Itikan'] = 0;
+      barData['Bakahan'] = 0;
+      barData['Iba_Pa'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+        var Family_members = data[x].pangkabuhayan;
+        for(var y = 0; y < data[x].pangkabuhayan.length; y++) {
+            family_mem = Family_members[y].PangKomersiyo;
+            barData[family_mem] += 1;
+        }
+      }
+
+      var lineChartData = {
+        labels: ['babuyan',
+          'manukan',
+          'itikan',
+          'bakahan',
+          ' iba pa'],
+        datasets: [{
+          label: '# of Votes',
+          data: [
+            barData['Babuyan'],
+      barData['Manukan'],
+      barData['Itikan'],
+      barData['Bakahan'],
+      barData['Iba_Pa']
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      lineChart9(lineChartData, options);
+    }
+
+    getDataLineChart9();
+
+    function lineChart9(data, options) {
+      if ($("#lineChart9").length) {
+        var lineChartCanvas = $("#lineChart9").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        if(window.bar13 != undefined)
+        window.bar13.destroy();
+        window.bar13 = new Chart(lineChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+
+    async function getDataLineChart10() {
+      var data = [];
+
+      if (localStorage.getItem('sitio') === undefined) {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('role', 2);
+      } else {
+        var { data, error } = await database.from('testing').select('*, pangkabuhayan ( * )').eq('sitio', localStorage.getItem('sitio'));
+      }
+
+      var barData = [];
+      barData['Flush'] = 0;
+      barData['DeBuhos'] = 0;
+      barData['Hinukay'] = 0;
+      barData['Iba_Pa'] = 0;
+
+
+      for(var x = 0; x < data.length; x++) {
+        var Family_members = data[x].pangkabuhayan;
+        for(var y = 0; y < data[x].pangkabuhayan.length; y++) {
+            family_mem = Family_members[y].UringPalikuran;
+            barData[family_mem] += 1;
+        }
+      }
+
+      var lineChartData = {
+        labels: ['flush',
+          'de buhos',
+          'hukay'],
+        datasets: [{
+          label: '# of Votes',
+          data: [
+            barData['Flush'],
+            barData['DeBuhos'],
+            barData['Hinukay'],
+            barData['Iba_Pa']
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      lineChart10(lineChartData, options);
+    }
+
+    getDataLineChart10();
+
+    function lineChart10(data, options) {
+      if ($("#lineChart10").length) {
+        var lineChartCanvas = $("#lineChart10").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        if(window.bar14 != undefined)
+        window.bar14.destroy();
+        window.bar14 = new Chart(lineChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
 
     async function bataPWD(type="bata") {
       
