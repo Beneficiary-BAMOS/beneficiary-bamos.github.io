@@ -299,8 +299,8 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                      Select Sitio:
-                      <select id="sitio-status">
+                      <h4 style="display: inline;">Select Sitio:</h4>
+                      <select id="sitio-status" style="width: 200px;font-size: 18px;">
                         <option value="1">Sitio 1</option>
                         <option value="2">Sitio 2</option>
                         <option value="3">Sitio 3</option>
@@ -430,7 +430,11 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-<div class="printXL"></div>
+<div class="printXL">
+  <div class="row">
+
+  </div>
+</div>
 
   <!-- container-scroller -->
   <!-- plugins:js -->
@@ -1128,21 +1132,27 @@
     $('.drop-print li a').click(function(e) {
       e.preventDefault();
       $('.drop-print').toggleClass('open');
-      pdfS($(this).data('graph'));
+      pdfS($(this).data('graph'), $(this).text());
     });
 
-
-    function pdfS(graph) {
+    function pdfS(graph, filename) {
       var canvases = $('canvas');
       if (graph) {
           var title = $(canvases)[graph].previousElementSibling;
           
           var fTitle = $(title).clone().children().remove().end().text().trim();
 
-          var img = new Image();
-          img.src = $(canvases)[graph].toDataURL();
-          $('.printXL').append(`<h4>${fTitle}</h4><br>`);
-          $('.printXL').append(img);
+          html = `
+            <div class="col-12">
+              <br>
+              <br>
+              <h4>${fTitle}</h4>
+              <img src="${canvases[0].toDataURL()}" />
+              <br>          
+            </div>
+          `
+
+          $('.printXL .row').append(html);
       } else {
         $(canvases).each(function(key, canvas){
           var title = canvas.previousElementSibling;
@@ -1151,13 +1161,23 @@
 
           var img = new Image();
           img.src = canvas.toDataURL();
-          $('.printXL').append(`<h4>${fTitle}</h4><br>`);
-          $('.printXL').append(img);
+
+          html = `
+            <div class="col-12">
+              <br>
+              <br>
+              <h4>${fTitle}</h4>
+              <img src="${canvas.toDataURL()}" />
+              <br>          
+            </div>
+          `
+
+          $('.printXL .row').append(html);
         });
       }
       
-      
-      html2canvas(document.getElementById("chart-container")).then(function(canvas) {
+
+     
         var pdf = new jsPDF('p', 'pt', 'letter');
         source = $('.printXL')[0];
         specialElementHandlers = {
@@ -1165,6 +1185,7 @@
                 return true
             }
         };
+        
         margins = {
             top: 80,
             bottom: 60,
@@ -1172,10 +1193,12 @@
             width: 200
         };
 
+        
+
         pdf.fromHTML(
             source, // HTML string or DOM elem ref.
-            20, // x coord
-            20, { // y coord
+            40, // x coord
+            40, { // y coord
                 'width': 170, // max width of content on PDF
                 'elementHandlers': specialElementHandlers
             },
@@ -1183,11 +1206,12 @@
             function (dispose) {
                 // dispose: object with X, Y of the last line add to the PDF 
                 //          this allow the insertion of new lines after html
-                pdf.save('Test.pdf');
-                $('.printXL').html('');
+                const timeStamp = new Date().toLocaleString('en-US', {year: 'numeric', month: 'numeric', day: 'numeric'}).trim();
+                pdf.save(`${filename}-${timeStamp}.pdf`);
+                $('.printXL .row').html('');
             }, margins
         );
-      });
+                
     }
     
   </script>

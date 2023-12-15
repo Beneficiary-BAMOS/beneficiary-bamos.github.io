@@ -288,21 +288,18 @@
             <!--- FORM 5 --->
             <h2>KALUSUGANG PAMPAMILYA</h2>
             <div class="column">
-              <div class="select-box">
-                <select id="kabuuan">
-                  <option hidden>A. Kabuuang bilang ng Mag-asawang Nagsasama</option>
-                  <option>Kasal</option>
-                  <option>Live-in</option>
-                </select>
-            </div>
-            <div class="select-box">
-              <select id="pagbubuntis">
-                <option hidden>B. Bilang ng Ipinagbuntis</option>
-                <option>Lalaki</option>
-                <option>Babae</option>
-                <option>Nakunan</option>
-              </select>
-          </div>       
+              <div class="input-box">
+                <label>A. Kabuuang bilang ng Mag-asawang Nagsasama</label>
+                <input type="number"  placeholder="Kasal" id="kasal"  name="kasal" />
+                <input type="number"  placeholder="Live-in" id="livein"  name="livein" />
+              </div>
+              <div class="input-box buntis">
+                <label>B. Bilang ng Ipinagbuntis</label>
+                <input type="number"  placeholder="Babae" id="babae"  name="babae" />
+                <input type="number"  placeholder="Lalake" id="lalake"  name="lalake" />
+                <input type="number"  placeholder="Nakunan" id="nakunan"  name="nakunan" />
+              </div>
+              </div>       
             </div>
             <br>
             <br>
@@ -415,20 +412,27 @@
           <h2>PANLIPUNAN</h2>
           <div class="input-box member">
             <label>A. Samahang Kinasaniban:</label>
-            <div class="f61 row"></div>
+            <div class="column">
+              <input type="text" placeholder="Organisasyon" id="organisasyon1" name="organisasyon1"   />
+              <input type="text" placeholder="Katungkulan" id="katungkulan1" name="katungkulan1" />
+            </div>
           </div>
-            <br>
+          <br>
         
-            <div class="input-box member">
-                <label>B. Kanino Sumasangguni kung may suliraning pambarangay?</label>
-                <div class="f62 row"></div>
-              </div>
-                <br>
+          <div class="input-box member">
+            <label>B. Kanino Sumasangguni kung may suliraning pambarangay?</label>
+            <div class="column">
+                <input type="text" placeholder="Pambarangay" id="pambarangay"  name="pambarangay" />
+            </div>
+          </div>
+          <br>
 
-                <div class="input-box member">
-                    <label>C. Kanino Sumasangguni kung may suliraning pambayan?</label>
-                    <div class="f63 row"></div>
-                  </div>
+          <div class="input-box member">
+              <label>C. Kanino Sumasangguni kung may suliraning pambayan?</label>
+              <div class="column">
+                <input type="text" placeholder="Pambayan" id="pambayan" name="pambayan"  />
+              </div>
+          </div>
 
           <div class="column">
             <input type="hidden" name="tbl1" value="" />

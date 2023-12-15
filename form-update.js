@@ -1,5 +1,10 @@
 // Import the Supabase client
+//firstLoad = true;
 
+
+if (window.performance && window.performance.navigation.type === 2) {
+  window.location.reload();
+}
 // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
 const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
@@ -44,70 +49,70 @@ async function checkConnection() {
         <div class="input-box member family-member ">   
 
                                               <label>Family member </label>
-                                              <input type="text" placeholder="Member" name="fmember${key+1}" value="${member.member}" required/>
+                                              <input type="text" placeholder="Member" name="fmember${key+1}" value="${member.name}" required/>
                             <div class="column">
-                                              <input type="date" placeholder="Date of birth" name="fbday${key+1}" value="${member.bday}" required/>
+                                              <input type="date" placeholder="Date of birth" name="fbday${key+1}" value="${member.birthdate}" required/>
                                               <input type="number" placeholder="Age" name="fage${key+1}" value="${member.age}" required/>
                                               <select name="frelation${key+1}" class="select-box" required>
                                                 <option hidden>Member Relation</option>
-                                                <option value="GrandMother">GrandMother</option>
-                                                <option value="GrandFather">GrandFather</option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Father">Father</option>
-                                                <option value="Husband">Husband</option>
-                                                <option value="Wife">Wife</option>
-                                                <option value="Son">Son</option>
-                                                <option value="Daughter">Daughter</option>
-                                                <option value="Uncle">Uncle</option>
-                                                <option value="Auntie">Auntie</option>
-                                                <option value="Nephew">Nephew</option>
-                                                <option value="Niece">Niece</option>
-                                                <option value="Grandchild">Grandchild</option>
-                                                <option value="Cousin">Cousin</option>
+                                                <option ${member.relation === 'GrandMother' ? 'selected':''} value="GrandMother">GrandMother</option>
+                                                <option ${member.relation === 'GrandFather' ? 'selected':''} value="GrandFather">GrandFather</option>
+                                                <option ${member.relation === 'Mother' ? 'selected':''} value="Mother">Mother</option>
+                                                <option ${member.relation === 'Father' ? 'selected':''} value="Father">Father</option>
+                                                <option ${member.relation === 'Husband' ? 'selected':''} value="Husband">Husband</option>
+                                                <option ${member.relation === 'Wife' ? 'selected':''} value="Wife">Wife</option>
+                                                <option ${member.relation === 'Son' ? 'selected':''} value="Son">Son</option>
+                                                <option ${member.relation === 'Daughter' ? 'selected':''} value="Daughter">Daughter</option>
+                                                <option ${member.relation === 'Uncle' ? 'selected':''} value="Uncle">Uncle</option>
+                                                <option ${member.relation === 'Auntie' ? 'selected':''} value="Auntie">Auntie</option>
+                                                <option ${member.relation === 'Nephew' ? 'selected':''} value="Nephew">Nephew</option>
+                                                <option ${member.relation === 'Niece' ? 'selected':''} value="Niece">Niece</option>
+                                                <option ${member.relation === 'Grandchild' ? 'selected':''} value="Grandchild">Grandchild</option>
+                                                <option ${member.relation === 'Cousin' ? 'selected':''} value="Cousin">Cousin</option>
                                               </select>
                                         <div class="select-box">
                                                       <select name="fcivilstatus${key+1}" required>
                                                         <option hidden>Civil Status</option>
-                                                        <option value="Single" ${member.civilStat === 'Single' ? 'selected':''}>Single</option>
-                                                        <option value="Married" ${member.civilStat === 'Married' ? 'selected':''}>Married</option>
-                                                        <option value="Widowed" ${member.civilStat === 'Widowed' ? 'selected':''}>Widowed</option>
+                                                        <option value="Single" ${member.civilStatus === 'Single' ? 'selected':''}>Single</option>
+                                                        <option value="Married" ${member.civilStatus === 'Married' ? 'selected':''}>Married</option>
+                                                        <option value="Widowed" ${member.civilStatus === 'Widowed' ? 'selected':''}>Widowed</option>
                                                       </select>
                                         </div>
                          </div>
         
                       <div class="column">
-                            <input type="text" placeholder="Religion" name="religion" required/>
-                            <select name="feducation${key+1}" class="select-box" value="${member.edAttain}" required>
+                            <input type="text" placeholder="Religion" name="freligion${key+1}" value="${member.religion}" required/>
+                            <select name="feducation${key+1}" class="select-box" value="${member.educationAttainment}" required>
                               <option hidden>Educational Attainment</option>
-                              <option value="Elementary" ${member.edAttain === 'Elementary' ? 'selected':''}>Elementary</option>
-                              <option value="JuniorHigh" ${member.edAttain === 'JuniorHigh' ? 'selected':''}>JuniorHigh</option>
-                              <option value="SeniorHigh" ${member.edAttain === 'SeniorHigh' ? 'selected':''}>SeniorHigh</option>
-                              <option value="College" ${member.edAttain === 'College' ? 'selected':''}>College</option>
+                              <option value="Elementary" ${member.educationAttainment === 'Elementary' ? 'selected':''}>Elementary</option>
+                              <option value="JuniorHigh" ${member.educationAttainment === 'JuniorHigh' ? 'selected':''}>JuniorHigh</option>
+                              <option value="SeniorHigh" ${member.educationAttainment === 'SeniorHigh' ? 'selected':''}>SeniorHigh</option>
+                              <option value="College" ${member.educationAttainment === 'College' ? 'selected':''}>College</option>
                             </select>
-                            <input type="text" placeholder="Source of income/Work" value="${member.sourceIncome}" name="fincome${key+1}" required/>
+                            <input type="text" placeholder="Source of income/Work" value="${member.sourceOfIncome}" name="fincome${key+1}" required/>
                             <div class="select-box">
-                              <select name="fgender${key+1}" value="${member.genderPick}">
+                              <select name="fgender${key+1}" value="${member.gender}">
                                 <option hidden>Gender</option>
-                                <option value="Female" ${member.genderPick === 'Female' ? 'selected':''}>Female</option>
-                                <option value="Male" ${member.genderPick === 'Male' ? 'selected':''}>Male</option>
-                                <option value="Prefer_not_to_say" ${member.genderPick === 'Prefer_not_to_say' ? 'selected':''}>Prefer not to say</option>
+                                <option value="Female" ${member.gender === 'Female' ? 'selected':''}>Female</option>
+                                <option value="Male" ${member.gender === 'Male' ? 'selected':''}>Male</option>
+                                <option value="Prefer_not_to_say" ${member.gender === 'Prefer_not_to_say' ? 'selected':''}>Prefer not to say</option>
                               </select>
                             </div>
                       </div>
                       
                       <div class="column">
-                              <input type="number" placeholder="Years of staying in the area" name="fyears${key+1}" value="${member.stay}" required/>
-                              <input type="text" placeholder="Philhealth(optional)" name="fphilid${key+1}" value="${member.philId}" />
+                              <input type="number" placeholder="Years of staying in the area" name="fyears${key+1}" value="${member.stayDuration}" required/>
+                              <input type="text" placeholder="Philhealth(optional)" name="fphilid${key+1}" value="${member.philippineID}" />
                             <div class="select-box">
-                              <select name="fmonthlyincome${key+1}" value="${member.incomePick}">
+                              <select name="fmonthlyincome${key+1}" value="${member.incomeSource}">
                                 <option hidden>Monthly income</option>
-                                <option value="5k-10k">5k-10k</option>
-                                <option value="15k-25k">15k-25k</option>
-                                <option value="30k+">30k+</option>
+                                <option ${member.incomeSource === '5k-10k' ? 'selected':''} value="5k-10k">5k-10k</option>
+                                <option ${member.incomeSource === '15k-25k' ? 'selected':''} value="15k-25k">15k-25k</option>
+                                <option ${member.incomeSource === '30k+' ? 'selected':''} value="30k+">30k+</option>
                               </select>
                             </div>
                           <div class="checkbox">
-                            <label><input type="checkbox" value="isEmployee" name="isEmployee"> Employed</label>
+                            <label><input type="checkbox" value="" ${member.additionalEmployment === 'Employed' ? 'checked':''} name="additionalEmployment"> Employed</label>
                           </div>
                </div> 
        
@@ -143,11 +148,11 @@ async function checkConnection() {
         let famAddBlock = `<div class="input-box member family-member">
             <label>Pangalan ${key+1}</label>
             <div class="column">
-            <input type="text" placeholder="Member" name="nmember${key+1}" value="${nut.member}"/>
-            <input type="date" placeholder="Kapanganakan" name="nkapanganakan${key+1}" value="${nut.kapanganakan}"/>
+            <input type="text" placeholder="Member" name="nmember${key+1}" value="${nut.name}"/>
+            <input type="date" placeholder="Kapanganakan" name="nkapanganakan${key+1}" value="${nut.birthdate}"/>
             </div>
             <div class="column">
-              <input type="number" placeholder="Gulang sa buwan" name="ngulang${key+1}" value="${nut.gulang}"/>
+              <input type="number" placeholder="Gulang sa buwan" name="ngulang${key+1}" value="${nut.age}"/>
               <input type="text" placeholder="Timbang " name="ntimbang${key+1}" value="${nut.timbang}" />
               <input type="text" placeholder="Imunisasyon" name="nimunisasyon${key+1}" value="${nut.imunisasyon}" />
               <input type="text" placeholder="Nasagawa"  name="nnasagawa${key+1}" value="${nut.nasagawa}"/>
@@ -166,18 +171,18 @@ async function checkConnection() {
                 <label>Pangalan ${key+1}</label>
                 <div class="column">
                 
-                <input type="text" placeholder="Member" name="pwdmember${key+1}" value="${pwd.member}"    />
-                <input type="date" placeholder="Kapanganakan"  name="pwdkapanganakan${key+1}" value="${pwd.kapanganakan}"  />
+                <input type="text" placeholder="Member" name="pwdmember${key+1}" value="${pwd.name}"    />
+                <input type="date" placeholder="Kapanganakan"  name="pwdkapanganakan${key+1}" value="${pwd.birthdate}"  />
                 </div>
                 <div class="column">
-                    <input type="number" placeholder="Edad" name="pwdedad${key+1}" value="${pwd.edad}"  />
-                    <input type="text" placeholder="Kapansanan" name="pwdkapansanan${key+1}"  value="${pwd.kapansanan}" />
+                    <input type="number" placeholder="Edad" name="pwdedad${key+1}" value="${pwd.age}"  />
+                    <input type="text" placeholder="Kapansanan" name="pwdkapansanan${key+1}"  value="${pwd.disability}" />
                     <div class="select-box">
                     <select name="pwdkasarian${key+1}">
                         <option hidden>Kasarian</option>
-                        <option>Babae</option>
-                        <option>Lalaki</option>
-                        <option>Iba pa</option>
+                        <option ${pwd.gender === 'Babae' ? 'selected':''} value="Babae">Babae</option>
+                        <option ${pwd.gender === 'Lalaki' ? 'selected':''} value="Lalaki">Lalaki</option>
+                        <option ${pwd.gender === 'Iba pa' ? 'selected':''} value="Iba pa">Iba pa</option>
                     </select>
                 </div> 
             </div>
@@ -188,8 +193,12 @@ async function checkConnection() {
 
     const eBuntis = data.kalusuganBuntis[data.kalusuganBuntis.length-1];
 
-    $('#kabuuan').val(eBuntis.MagAsawangNagsasama);
-    $('#pagbubuntis').val(eBuntis.BilangngIpinagbuntis);
+    $('#kasal').val(eBuntis.kasal);
+    $('#livein').val(eBuntis.livein);
+    $('.buntis #babae').val(eBuntis.babae);
+    $('.buntis #lalake').val(eBuntis.lalake);
+    $('.buntis #nakunan').val(eBuntis.nakunan);
+
     $('#balak').val(eBuntis.MayBalakpaMaganak);
     $('#nagpapagamot').val(eBuntis.Nagpapagamot);
     $('#kalagayan').val(eBuntis.Kalagayan);
@@ -201,30 +210,11 @@ async function checkConnection() {
 
     const ePanlipunan = data.panlipunan[data.panlipunan.length-1];
 
-    console.log(JSON.parse(ePanlipunan.Pambarangay));
-
-    JSON.parse(ePanlipunan.Pambarangay).forEach((bar)=> {
-        console.log(bar);
-        let famAddBlock1 = `<div class="col-6">
-            <input type="text" placeholder=""  class="pambaranggay" value="${bar}" />
-        </div>`;
-
-        $('.f62').append(famAddBlock1);
-    });
-    JSON.parse(ePanlipunan.Pambayan).forEach((bay)=> {
-        let famAddBlock2 = `<div class="col-6">
-            <input type="text" placeholder=""  class="pambayan" value="${bay}" />
-        </div>`;
-
-        $('.f63').append(famAddBlock2);
-    });
-    JSON.parse(ePanlipunan.SamahangKinasaniban).forEach((sam)=> {
-        let famAddBlock3 = `<div class="col-6">
-            <input type="text" placeholder=""  class="organisasyon" value="${sam}" />
-        </div>`;
-
-        $('.f61').append(famAddBlock3);
-    });
+    $(`#organisasyon1`).val(ePanlipunan.organisasyon1);
+    $(`#katungkulan1`).val(ePanlipunan.katungkulan1);
+    $(`#pambarangay`).val(ePanlipunan.pambarangay);
+    $(`#pambayan`).val(ePanlipunan.pambayan);
+    
     
     $(`[name="tbl1"]`).val(eMiyembro.id);
     $(`[name="tbl2"]`).val(ePangkabuhayan.id);
@@ -262,7 +252,6 @@ async function checkConnection() {
     
   }
 }
-
 // Call the checkConnection function
 checkConnection();
 
@@ -281,22 +270,24 @@ async function nextPage2() {
     sinoka: $('#relations').val(),
     bahayNumero: $('#houseNum').val(),
     kasarian: $('[name="gender"]:checked').val(),
-    Family_members:new Array};
+    Family_members:new Array
+  };
     
 
   for($i = 1; $i <= recordNum.miyembro; $i++) {
     miyembro[`Family_members`].push({
-      member: $(`[name="fmember${$i}"]`).val(),
-      bday: $(`[name="fbday${$i}"]`).val(),
+      name: $(`[name="fmember${$i}"]`).val(),
+      birthdate: $(`[name="fbday${$i}"]`).val(),
       age: $(`[name="fage${$i}"]`).val(),
-      civilStat: $(`[name="fcivilstatus${$i}"]`).val(),
+      civilStatus: $(`[name="fcivilstatus${$i}"]`).val(),
       relation: $(`[name="frelation${$i}"]`).val(),
-      edAttain: $(`[name="feducation${$i}"]`).val(),
-      sourceIncome: $(`[name="fincome${$i}"]`).val(),
-      genderPick: $(`[name="fgender${$i}"]`).val(),
-      stay: $(`[name="fyears${$i}"]`).val(),
-      incomePick: $(`[name="fmonthlyincome${$i}"]`).val(),
-      philId: $(`[name="fphilid${$i}"]`).val(),
+      educationAttainment: $(`[name="feducation${$i}"]`).val(),
+      sourceOfIncome: $(`[name="fincome${$i}"]`).val(),
+      gender: $(`[name="fgender${$i}"]`).val(),
+      stayDuration: $(`[name="fyears${$i}"]`).val(),
+      incomeSource: $(`[name="fmonthlyincome${$i}"]`).val(),
+      philippineID: $(`[name="fphilid${$i}"]`).val(),
+      religion: $(`[name="freligion${$i}"]`).val(),
     });
   }
 
@@ -328,9 +319,9 @@ async function nextPage2() {
 
     for($i = 1; $i <= recordNum.nutrisyon; $i++) {
       nutrisyon[`Family_members`].push({
-        member: $(document).find(`[name="nmember${$i}"]`).val(),
-        kapanganakan: $(`[name="nkapanganakan${$i}"]`).val(),
-        gulang: $(`[name="ngulang${$i}"]`).val(),
+        name: $(document).find(`[name="nmember${$i}"]`).val(),
+        birthdate: $(`[name="nkapanganakan${$i}"]`).val(),
+        age: $(`[name="ngulang${$i}"]`).val(),
         timbang: $(`[name="ntimbang${$i}"]`).val(),
         imunisasyon: $(`[name="nimunisasyon${$i}"]`).val(),
         nagsagawa: $(`[name="nnasagawa${$i}"]`).val()
@@ -342,11 +333,11 @@ async function nextPage2() {
 
     for($i = 1; $i <= recordNum.pwd; $i++) {
       kalusuganPWD[`Family_members`].push({
-        member: $(`[name="pwdmember${$i}"]`).val(),
-        kapanganakan: $(`[name="pwdkapanganakan${$i}"]`).val(),
-        edad:$(`[name="pwdedad${$i}"]`).val(),
-        kapansanan:$(`[name="pwdkapansanan${$i}"]`).val(),
-        kasarian:$(`[name="pwdkasarian${$i}"]`).val()
+        name: $(`[name="pwdmember${$i}"]`).val(),
+        birthdate: $(`[name="pwdkapanganakan${$i}"]`).val(),
+        age:$(`[name="pwdedad${$i}"]`).val(),
+        disability:$(`[name="pwdkapansanan${$i}"]`).val(),
+        gender:$(`[name="pwdkasarian${$i}"]`).val()
       });
     }
 
@@ -356,36 +347,24 @@ async function nextPage2() {
     });
 
     let kalusuganBuntis = {
-      MagAsawangNagsasama:$(`#kabuuan`).val(),
-      BilangngIpinagbuntis:$(`#pagbubuntis`).val(),
+      kasal:$(`#kasal`).val(),
+      livein:$(`#livein`).val(),
+      babae:$(`.buntis #babae`).val(),
+      lalake:$(`.buntis #lalake`).val(),
+      nakunan:$(`.buntis #nakunan`).val(),
       MayBalakpaMaganak:$(`#balak`).val(),
       Nagpapagamot:$(`#nagpapagamot`).val(),
       Kalagayan:$(`#kalagayan`).val(),
       FPmethod:JSON.stringify(fpp)
     }
 
-    const aa = new Array;
-    $('.pambaranggay').each(function(test, item) {
-        aa.push(item.value);
-    });
-
-    const bb = new Array;
-    $('.pambayan').each(function(test, item) {
-        bb.push(item.value);
-    });
-
-    const cc = new Array;
-    $('.organisasyon').each(function(test, item) {
-        cc.push(item.value);
-    });
-
-    
     
     
     let panlipunan = {
-      SamahangKinasaniban: JSON.stringify(aa),
-      Pambarangay: JSON.stringify(bb),
-      Pambayan: JSON.stringify(cc)
+      organisasyon1: $(`#organisasyon1`).val(),
+      katungkulan1: $(`#katungkulan1`).val(),
+      pambarangay: $(`#pambarangay`).val(),
+      pambayan: $(`#pambayan`).val()
     }
 
 
@@ -403,8 +382,6 @@ async function nextPage2() {
       .from(field[1])
       .update([field[0]])
       .eq('id', field[2]);
-      
-      console.log(data);
   });
 
   
@@ -413,7 +390,10 @@ async function nextPage2() {
   
 
   alert('User Updated!');
+  setTimeout(function() {
+    window.location.href = 'index.html';
+  }, 3000);
   // return false;
-  window.location.href = 'index.html';
+
   return false;
 }
