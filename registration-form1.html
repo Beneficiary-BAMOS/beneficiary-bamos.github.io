@@ -469,7 +469,7 @@ $(document).ready(function () {
                     displayMembers();
 
                     // Reset input fields
-                    $('.family-member input[type="text"]').val("");
+                    $('.family-member input[type="text"],.family-member input[type="number"], .family-member input[type="date"]').val("");
                     $('.family-member select').prop('selectedIndex',0);
 
                 
@@ -517,7 +517,7 @@ $(document).ready(function () {
      $('#fullname').val(userData.lastname + ', ' +userData.firstname+' '+userData.middlename);
      $('#completeAdd').val(userData.address);
      $('#sitio').val(userData.sitio);
-     $('#houseNum').val(userData.phoneNum);
+     $('#houseNum').val(userData.houseNum);
      $('#birthD').val(userData.birthDate);
   }
 
